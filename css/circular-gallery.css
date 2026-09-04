@@ -36,6 +36,10 @@
 }
 
 .circular-gallery.is-ready .circular-gallery__fallback {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
+}
+
+.circular-gallery .morph-slider-controls,
+.circular-gallery .morph-slider-indicators {
+  z-index: 5;
 }

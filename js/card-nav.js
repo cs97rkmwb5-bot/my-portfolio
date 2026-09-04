@@ -7,7 +7,7 @@
   var root = document.getElementById("card-nav-root");
   if (!root) return;
 
-  var HOME = root.getAttribute("data-home") || "index.html.html";
+  var HOME = "index.html";
   var NAV_OFFSET = 88;
   var EASE = "power3.out";
 
@@ -52,22 +52,16 @@
   var arrowSvg =
     '<svg class="nav-card-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>';
 
-  function isHomePage() {
-    var name = (window.location.pathname.split("/").pop() || "").toLowerCase();
-    return name === "" || name === "index.html" || name === "index.html.html" || name === "layout.html";
-  }
-
   function goTo(href) {
-    if (href.indexOf("mailto:") === 0) {
+    if (href.indexOf("mailto:") === 0 || href.indexOf("tel:") === 0) {
       window.location.href = href;
       return;
     }
 
     var hashIndex = href.indexOf("#");
-    var path = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
     var hash = hashIndex >= 0 ? href.slice(hashIndex) : "";
 
-    if (hash && isHomePage() && (path === "" || path === HOME)) {
+    if (hash) {
       var target = document.querySelector(hash);
       if (target) {
         var offset = hash === "#about" ? 0 : NAV_OFFSET;
@@ -75,9 +69,11 @@
         window.scrollTo({ top: top, behavior: "smooth" });
         return;
       }
+      window.location.href = HOME + hash;
+      return;
     }
 
-    window.location.href = href;
+    window.location.href = href.indexOf("http") === 0 ? href : HOME;
   }
 
   var cardsHtml = items.map(function (item) {
