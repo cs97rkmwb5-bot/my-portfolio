@@ -1,0 +1,23 @@
+/* ============================================
+   ScrollFloat — 滚动逐字浮入（保留原有标题字体）
+   ============================================ */
+
+.scroll-float-title {
+  overflow: hidden;
+}
+
+.scroll-float-title .scroll-float-text {
+  display: inline-block;
+  line-height: 1.4;
+  /* 继承 h2 上的 font-heading / font-display 等，不覆盖字体 */
+}
+
+.scroll-float-title .char {
+  display: inline-block;
+  will-change: opacity, transform;
+}
+
+/* 居中标题（商业项目合集） */
+.scroll-float-title.text-center .scroll-float-text {
+  display: inline-block;
+}

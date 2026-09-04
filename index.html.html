@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jin Qiuzhu · Animation &amp; AIGC Design Portfolio</title>
+
+  <!-- Google Fonts: display / heading / body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;600;700;900&family=Rye&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: "#f8f8f6",
+            ink: "#222222",
+            body: "#3a3a3a",
+            line: "#444444",
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/custom.css?v=9">
+  <link rel="stylesheet" href="css/morph-slider.css">
+  <link rel="stylesheet" href="css/stepper.css">
+  <link rel="stylesheet" href="css/bounce-cards.css">
+  <link rel="stylesheet" href="css/staggered-menu.css?v=4">
+  <link rel="stylesheet" href="css/circular-gallery.css">
+  <link rel="stylesheet" href="css/elastic-slider.css">
+  <link rel="stylesheet" href="css/dome-gallery.css?v=3">
+  <link rel="stylesheet" href="css/CardNav.css">
+  <link rel="stylesheet" href="css/bilingual.css">
+  <link rel="stylesheet" href="css/text-cursor.css">
+  <link rel="stylesheet" href="css/text-pressure.css">
+  <link rel="stylesheet" href="css/scroll-float.css">
+
+  <style>
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem 9rem;
+    }
+
+    .layout-section { padding: 6.5rem 0 7.5rem; }
+
+    #about-works .about-prose__heading,
+    #about-works .about-prose__heading strong,
+    #about-works .about-tools > p {
+      font-weight: 700;
+    }
+
+    #about-works .about-prose__body {
+      position: relative;
+      padding-left: 1.05rem;
+    }
+
+    #about-works .about-prose__body::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #222222;
+    }
+
+    .section__kicker {
+      display: inline-block;
+      border: 1px solid #444444;
+      padding: 0.25rem 0.75rem;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #222222;
+      margin-bottom: 1.1rem;
+    }
+
+    .section__title {
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.55rem, 2.8vw, 2.1rem);
+      color: #222222;
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+      margin: 0 0 1.25rem;
+      text-align: center;
+    }
+
+    .section__title--left { text-align: left; }
+
+    .block { margin-top: 5.75rem; }
+
+    .block__title {
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #222222;
+      letter-spacing: 0.02em;
+      margin: 0 0 1.35rem;
+    }
+
+    .slot {
+      background: #f8f8f6;
+      height: auto;
+      max-height: none;
+      min-height: 8.5rem;
+      padding: 1.5rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .slot--tall { min-height: 14rem; }
+    .slot--video { min-height: 0; aspect-ratio: 16 / 9; overflow: hidden; }
+
+    #zensit .poster-full {
+      display: block;
+      width: 100%;
+      margin: 3.25rem 0 0;
+      position: relative;
+      height: auto;
+      max-height: none;
+      aspect-ratio: 1024 / 576;
+    }
+
+    #zensit .slot-copy,
+    #zensit .block__title,
+    #zensit .spec-split__heading {
+      text-align: left;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    #zensit .zensit-product .block__title,
+    #zensit .zensit-product .slot-copy {
+      text-align: left;
+    }
+
+    #zensit .zensit-product .slot--copy {
+      min-height: 0;
+    }
+
+    #zensit .zensit-product__concept {
+      max-width: 36rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    #zensit .zensit-product-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.78fr);
+      gap: 2.75rem 3.25rem;
+      align-items: start;
+      width: 100%;
+      margin-top: 2.85rem;
+    }
+
+    #zensit .zensit-product-hero,
+    #zensit .zensit-product-aside figure,
+    #zensit .zensit-product-study {
+      margin: 0;
+      background: #f8f8f6;
+      box-shadow: 0 12px 32px rgba(34, 34, 34, 0.055);
+    }
+
+    #zensit .zensit-product-hero img,
+    #zensit .zensit-product-aside img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #f8f8f6;
+    }
+
+    #zensit .zensit-product-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding-top: 3.75rem;
+    }
+
+    #zensit .zensit-product-box {
+      width: 82%;
+      align-self: flex-end;
+    }
+
+    #zensit .zensit-product figcaption {
+      margin: 0.7rem 0 0;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+      color: #3a3a3a;
+    }
+
+    #zensit .zensit-product__details-title {
+      margin: 3.5rem 0 1.35rem;
+    }
+
+    #zensit .zensit-product-studies {
+      display: grid;
+      grid-template-columns: 1.05fr 0.85fr 1.2fr;
+      gap: 2.5rem 2.25rem;
+      align-items: end;
+      width: 100%;
+      margin-top: 0;
+    }
+
+    #zensit .zensit-product-study {
+      overflow: hidden;
+    }
+
+    #zensit .zensit-product-study img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #f8f8f6;
+    }
+
+    #zensit .zensit-product-study--mark {
+      aspect-ratio: 4 / 5;
+    }
+
+    #zensit .zensit-product-study--mark img {
+      object-position: 50% 46%;
+      transform: scale(1.35);
+      transform-origin: 50% 48%;
+    }
+
+    #zensit .zensit-product-study--blossom {
+      aspect-ratio: 1 / 1;
+      margin-bottom: 2.25rem;
+    }
+
+    #zensit .zensit-product-study--blossom img {
+      object-position: 50% 14%;
+      transform: scale(1.55);
+      transform-origin: 50% 16%;
+    }
+
+    #zensit .zensit-product-study--ripple {
+      aspect-ratio: 5 / 4;
+    }
+
+    #zensit .zensit-product-study--ripple img {
+      object-position: 50% 78%;
+      transform: scale(1.25);
+      transform-origin: 50% 82%;
+    }
+
+    #zensit .poster-full .morph-slider {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #zensit .poster-lens {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+      border-radius: 16px;
+    }
+
+    #zensit .spec-block + .spec-block {
+      margin-top: 5.75rem;
+    }
+
+    #zensit .spec-frame {
+      width: 100%;
+      container-type: inline-size;
+    }
+
+    #zensit .spec-frame + .spec-frame {
+      margin-top: 2.25rem;
+    }
+
+    #zensit .spec-frame .slot {
+      height: auto;
+      max-height: none;
+      min-height: calc((min(1100px, 100vw) - 5rem) * 9 / 16);
+      min-height: calc(100cqw * 9 / 16);
+      overflow: visible;
+    }
+
+    #zensit .spec-frame .slot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+    }
+
+    #zensit .spec-identity .spec-intro {
+      margin: 0 0 3.25rem;
+    }
+
+    #zensit .logo-evo-bleed {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0.7rem;
+    }
+
+    #zensit .block:has(.logo-evo) .spec-frame .slot {
+      min-height: 0;
+      padding: 0.2rem 0 0.45rem;
+    }
+
+    #zensit .block:has(.logo-evo) .spec-frame + .spec-frame {
+      margin-top: 0.55rem;
+    }
+
+    #zensit .block:has(.logo-evo) + .block {
+      margin-top: 1.85rem;
+    }
+
+    #zensit .logo-evo {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.45rem 0.85rem;
+      align-items: end;
+      justify-items: center;
+    }
+
+    #zensit .logo-evo img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: clamp(15.5rem, 40vh, 26rem);
+      object-fit: contain;
+      object-position: center bottom;
+      background: #f8f8f6;
+    }
+
+    #zensit .block:has(.logo-evo) .elastic-slider {
+      width: min(28rem, 100%);
+    }
+
+    #zensit .block:has(.logo-evo) .elastic-slider__icon {
+      width: 1.65rem;
+      height: 1.65rem;
+    }
+
+    #zensit .block:has(.logo-evo) .elastic-slider__value {
+      font-size: 0.88rem;
+    }
+
+    .spec-split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+      gap: 3.5rem 4.25rem;
+      align-items: start;
+    }
+
+    .spec-split__media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 16rem;
+    }
+
+    .spec-split__media img {
+      display: block;
+      width: auto;
+      max-width: min(22rem, 100%);
+      height: auto;
+      object-fit: contain;
+    }
+
+    .spec-split__part + .spec-split__part,
+    .spec-split__copy > .spec-split__part:not(:first-child) {
+      margin-top: 2.75rem;
+    }
+
+    .spec-split__heading {
+      display: block;
+      margin: 0 0 1.15rem;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #222222;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+
+    #zensit .zensit-step {
+      margin-top: 1.75rem;
+    }
+
+    #zensit .zensit-step:first-child {
+      margin-top: 0;
+    }
+
+    #zensit .zensit-compare {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    #zensit .zensit-compare .slot-copy {
+      margin: 0;
+    }
+
+    #zensit .zensit-compare__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      align-items: start;
+    }
+
+    #zensit .zensit-compare figure {
+      margin: 0;
+      background: #f8f8f6;
+    }
+
+    #zensit .zensit-compare img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #f8f8f6;
+    }
+
+    #zensit .zensit-compare figcaption {
+      margin: 0.5rem 0 0;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #3a3a3a;
+    }
+
+    #running-kueh .kueh-intro {
+      margin: 1.75rem 0 0;
+    }
+
+    #running-kueh .kueh-screen {
+      width: 100%;
+      container-type: inline-size;
+      height: auto;
+      max-height: none;
+      min-height: 0;
+      margin-top: 4rem;
+      padding: 1.75rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: visible;
+    }
+
+    #running-kueh .kueh-intro + .kueh-screen {
+      margin-top: 2.5rem;
+    }
+
+    #running-kueh .kueh-screen--tight {
+      min-height: 0;
+      margin-top: 1.25rem;
+      padding: 0.85rem 0;
+    }
+
+    #running-kueh .kueh-intro + .kueh-screen--tight {
+      margin-top: 1.25rem;
+    }
+
+    #running-kueh .kueh-map-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1rem;
+      align-items: start;
+      width: 100%;
+    }
+
+    #running-kueh .kueh-map-pair figure {
+      margin: 0;
+      background: #f8f8f6;
+    }
+
+    #running-kueh .kueh-map-pair img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #f8f8f6;
+    }
+
+    #running-kueh .kueh-screen .spec-split {
+      flex: 1 1 auto;
+      align-items: center;
+      width: 100%;
+    }
+
+    #running-kueh .kueh-screen .slot-copy {
+      padding: 0.35rem 0.15rem 0.35rem 0;
+      text-align: left;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    #running-kueh .kueh-screen .slot-copy p {
+      margin: 0 0 1.2rem;
+    }
+
+    #running-kueh .kueh-screen .slot-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    #running-kueh .kueh-pixel-wrap {
+      padding: 1.75rem;
+      background: transparent;
+    }
+
+    #running-kueh .kueh-pixel {
+      display: block;
+      width: auto;
+      max-width: min(16rem, 100%);
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    #running-kueh .kueh-output {
+      display: grid;
+      grid-template-columns: minmax(16rem, 0.85fr) minmax(0, 1.2fr);
+      gap: 2rem 2.5rem;
+      align-items: center;
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    #running-kueh .kueh-output .slot-copy {
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    #running-kueh .kueh-output__gallery {
+      position: relative;
+      width: 100%;
+      min-height: 28rem;
+      aspect-ratio: 1;
+      max-height: min(40rem, 72vh);
+      overflow: hidden;
+    }
+
+    #running-kueh .kueh-output__gallery .dome-gallery {
+      position: absolute;
+      inset: 0;
+    }
+
+    #running-kueh .kueh-screen--dome {
+      overflow: hidden;
+    }
+
+    #running-kueh .kueh-folk__layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 3.25rem;
+      align-items: center;
+      width: 100%;
+      flex: 1 1 auto;
+    }
+
+    #running-kueh .kueh-folk__media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    #running-kueh .kueh-folk-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      min-height: 16rem;
+      overflow: hidden;
+      background: #f8f8f6;
+      isolation: isolate;
+    }
+
+    #running-kueh .kueh-folk-stage__image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    #running-kueh .kueh-folk__copy {
+      position: relative;
+      z-index: 3;
+      min-width: 0;
+    }
+
+    @media (max-width: 860px) {
+      #running-kueh .kueh-intro {
+        margin-top: 1.35rem;
+      }
+
+      #running-kueh .kueh-screen {
+        margin-top: 3rem;
+        padding: 1.35rem 0;
+      }
+
+      #running-kueh .kueh-intro + .kueh-screen {
+        margin-top: 2rem;
+      }
+
+      #running-kueh .kueh-folk__layout {
+        grid-template-columns: 1fr;
+      }
+
+      #running-kueh .kueh-output {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+      }
+
+      #running-kueh .kueh-output__gallery {
+        min-height: 22rem;
+        height: min(28rem, 70vh);
+        max-height: 28rem;
+      }
+
+      #running-kueh .kueh-map-pair {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    #running-kueh .kueh-play iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border: 0;
+      background: #111111;
+    }
+
+    #running-kueh .kueh-play__link {
+      margin: 1.5rem 0 0;
+    }
+
+    #running-kueh .kueh-play__link a {
+      color: #222222;
+      border-bottom: 1px solid rgba(68, 68, 68, 0.35);
+      word-break: break-all;
+    }
+
+    #zensit .intro-grid {
+      align-items: start;
+      gap: 1.75rem 2.25rem;
+    }
+
+    #zensit .intro-grid > .stack {
+      gap: 0;
+    }
+
+    #zensit .zensit-plate {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    #zensit .zensit-plate .block__title {
+      text-align: left;
+      margin: 0 0 0.85rem;
+      position: static;
+    }
+
+    #zensit .intro-grid__media {
+      padding-top: 0;
+      gap: 0;
+    }
+
+    #zensit .zensit-intro {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    #zensit .zensit-intro .slot--copy {
+      min-height: 0;
+      height: auto;
+      padding: 0;
+    }
+
+    #zensit .zensit-fragment {
+      width: min(46rem, 100%);
+      margin: 4.25rem auto 0;
+      text-align: left;
+    }
+
+    #zensit .zensit-fragment__title {
+      margin: 0;
+      text-align: left;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: #222222;
+    }
+
+    #zensit .zensit-fragment__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    #zensit .zensit-fragment__hint {
+      margin: 0;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      color: #3a3a3a;
+    }
+
+    #zensit .zensit-fragment__line {
+      margin: 1.85rem 0 0;
+      max-width: 34rem;
+      text-align: left;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #3a3a3a;
+    }
+
+    #zensit .zensit-fragment__visual {
+      position: relative;
+      width: 100%;
+      margin-top: 2.75rem;
+      min-height: 16rem;
+      aspect-ratio: 16 / 8;
+      background: #f8f8f6;
+    }
+
+    #zensit .zensit-fragment__visual .morph-slider {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #zensit .slot--video {
+      padding: 0.75rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f8f6;
+    }
+
+    #zensit .slot--video .video-play {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f8f6;
+    }
+
+    #zensit .slot--video .video-play__preview {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .slot--photo {
+      width: 17.5rem;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
+      min-height: 0;
+    }
+    .slot--button {
+      min-height: 3.2rem;
+      width: 16rem;
+      max-width: 100%;
+      margin: 1.5rem auto 0;
+    }
+
+    .slot--copy {
+      align-items: flex-start;
+      justify-content: flex-start;
+      height: auto;
+      overflow: visible;
+    }
+
+    .slot-copy {
+      margin: 0;
+      width: 100%;
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #3a3a3a;
+      text-align: justify;
+    }
+
+    .slot-copy p {
+      margin: 0 0 0.75rem;
+    }
+
+    .slot-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .slot-copy strong {
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-weight: 700;
+      color: #222222;
+    }
+
+    .slot__label {
+      font-family: "Roboto Flex", "Noto Sans SC", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #222222;
+      opacity: 0.4;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .about-grid,
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 17.5rem 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-copy,
+    .stack { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .channel-grid .slot { min-height: 12rem; }
+
+    .xhs-stack-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem 4rem;
+    }
+
+    .xhs-stack {
+      position: relative;
+      width: min(300px, 62vw);
+      aspect-ratio: 576 / 1024;
+      touch-action: none;
+    }
+
+    .xhs-stack__card {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      border: 0;
+      overflow: hidden;
+      background: #f8f8f6;
+      box-shadow: none;
+      cursor: zoom-in;
+      user-select: none;
+    }
+
+    .xhs-stack__card.is-dragging {
+      cursor: grabbing;
+    }
+
+    .xhs-stack__card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      pointer-events: none;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.75rem;
+      margin-top: 3.5rem;
+    }
+
+    .overview-card {
+      padding: 1.25rem;
+      height: auto;
+      max-height: none;
+      min-height: 16rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      overflow: visible;
+    }
+
+    .overview-card .slot { min-height: 9rem; }
+
+    .rule {
+      height: 1px;
+      background: #222222;
+      border: 0;
+    }
+
+    @media (max-width: 860px) {
+      .page { padding: 5rem 1.25rem 7rem; }
+
+      .about-grid,
+      .intro-grid,
+      .channel-grid,
+      .overview-grid,
+      .spec-split { grid-template-columns: 1fr; }
+
+      #zensit .zensit-fragment {
+        width: 100%;
+        margin-top: 3.25rem;
+      }
+
+      #zensit .zensit-fragment__visual {
+        min-height: 12rem;
+      }
+
+      #zensit .zensit-compare__pair {
+        gap: 0.7rem;
+      }
+
+      #zensit .zensit-product-stage {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+      }
+
+      #zensit .zensit-product-aside {
+        padding-top: 0;
+        gap: 2.25rem;
+      }
+
+      #zensit .zensit-product-box {
+        width: 88%;
+        align-self: center;
+      }
+
+      #zensit .zensit-product-hero img,
+      #zensit .zensit-product-aside img {
+        max-height: min(32rem, 72vh);
+        margin: 0 auto;
+      }
+
+      #zensit .zensit-product-studies {
+        grid-template-columns: 1fr;
+        gap: 1.85rem;
+        margin-top: 2.5rem;
+      }
+
+      #zensit .zensit-product-study--blossom {
+        margin-bottom: 0;
+        max-width: 22rem;
+      }
+
+      #zensit .logo-evo { grid-template-columns: 1fr 1fr; }
+      #zensit .logo-evo img { max-height: clamp(12.5rem, 34vh, 18rem); }
+      #zensit .block:has(.logo-evo) + .block { margin-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="bg-paper text-body antialiased">
+
+  <div id="card-nav-root" data-home="layout.html"></div>
+
+  <main>
+
+    <section id="cover" class="section-full flex flex-col items-center justify-center px-10 relative">
+      <div class="absolute top-24 left-10">
+        <span class="label-box">2026.06.23</span>
+      </div>
+      <div class="absolute top-24 right-10 font-heading text-xs tracking-[0.25em] text-ink uppercase">
+        Design Portfolio
+      </div>
+
+      <div class="text-center max-w-4xl w-full">
+        <div class="double-rule mb-8"></div>
+        <div id="cover-text-pressure" class="text-pressure-wrap" aria-label="My Portfolio"></div>
+        <p class="font-heading text-ink text-lg md:text-xl tracking-[0.35em] mt-6 uppercase" data-zh="设计作品集">
+          Design Portfolio
+        </p>
+        <div class="double-rule mt-8"></div>
+      </div>
+
+      <div class="absolute bottom-10 text-center">
+        <p class="font-body text-sm text-body/50 tracking-widest" data-zh="向下滑动翻阅刊物">Scroll to turn the page</p>
+        <p class="font-body text-xs text-body/40 tracking-wide mt-2" data-zh="也可点击顶部导航栏翻页">Or use the navigation above</p>
+        <p class="font-body text-xs text-body/35 tracking-wide mt-3" data-zh="右键文字可查看中文原文">Right-click any text to view the Chinese original</p>
+      </div>
+    </section>
+
+    <div class="page">
+
+    <section class="chapter-page" id="about" aria-label="About Me">
+      <div class="chapter-page__frame">
+        <div class="double-rule"></div>
+        <h1 class="chapter-page__title star-title font-display" data-scroll-float data-zh="关于我">About Me</h1>
+        <div class="double-rule"></div>
+      </div>
+    </section>
+
+    <section class="layout-section" id="about-works">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 items-start">
+        <div class="avatar-wrap mx-auto md:mx-0" id="avatar-wrap">
+          <button type="button" class="avatar-trigger" aria-expanded="false" aria-controls="avatar-card" aria-label="View profile introduction">
+            <img
+              src="assets/images/avatar.png"
+              alt="Portrait of Jin Qiuzhu"
+              class="about-avatar"
+            >
+          </button>
+          <p class="avatar-hint" data-zh="轻击图片查看">Tap the image to view</p>
+          <aside class="avatar-card" id="avatar-card" aria-hidden="true">
+            <ul class="avatar-card__list">
+              <li data-zh="金秋竹｜JIN Qiuzhu">Jin Qiuzhu</li>
+              <li data-zh="华南农业大学 艺术学院动画系应届毕业生｜求职方向：AIGC广告创意">South China Agricultural University, School of Art — Animation, graduating class. Seeking AIGC advertising creative roles.</li>
+              <li data-zh="广州光盒动力文化传播有限公司｜AIGC设计师">Guangzhou Lightbox Dynamics Culture Communication Co., Ltd. · AIGC Designer</li>
+              <li data-zh="宅格物（深圳）文化有限公司｜AIGC实习生">Zhaigewu (Shenzhen) Culture Co., Ltd. · AIGC Intern</li>
+              <li data-zh="两段AIGC方向实践中搭建人机协同创作流程，兼顾创意发散与内容质量校验，熟悉商业视觉产出全链路。">Across both AIGC-focused roles, I built human–AI collaborative workflows that balance creative exploration with content quality control, and gained hands-on experience across the full commercial visual production pipeline.</li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="about-prose">
+          <p class="about-prose__heading"><strong class="font-heading text-ink font-bold" data-zh="专业能力">Professional Capabilities</strong></p>
+          <p class="about-prose__body" data-zh="熟练使用PS、Procreate、剪映、即梦、燃梦谷、Cursor；擅长品牌全案设计、TVC脚本撰写、影像成片制作、民俗文化调研、像素游戏原型开发。具备完整手绘能力，坚持人工把控叙事逻辑与文化准确性，善于解决AI生成带来的符号失真、逻辑错位等实际问题。">Proficient in Photoshop, Procreate, CapCut, Jimeng, Ranmeng Valley, and Cursor. Skilled in end-to-end brand design, TVC scriptwriting, finished-film production, folk-culture research, and pixel-game prototyping. I draw by hand, keep a human hold on narrative logic and cultural accuracy, and I know how to fix the symbol distortion and logic slips that AI generation tends to produce.</p>
+
+          <p class="about-prose__heading"><strong class="font-heading text-ink font-bold" data-zh="创作理念">Creative Philosophy</strong></p>
+          <p class="about-prose__body" data-zh="我的创作偏向情绪叙事与本土文化挖掘，相信技术工具应当服务人的表达。业余爱好泥塑创作，从实体手工创作中汲取造型与叙事灵感；英语四级，具备英文阅读理解能力。期待将动画叙事思维应用于AIGC广告创意工作。">My work leans toward emotional storytelling and local culture. I believe tools should serve what a person has to say. Off the clock I make clay sculpture, which feeds how I think about form and story. I hold CET-4 and read English comfortably. I want to bring an animator’s sense of narrative to AIGC advertising.</p>
+
+          <div id="contact" class="about-contact">
+            <button id="copy-email" class="copy-email" data-email="jqz2082027112@qq.com" type="button">
+              jqz2082027112@qq.com
+              <span class="text-xs opacity-60" data-zh="点击复制">Click to copy</span>
+            </button>
+            <a class="about-phone" href="tel:13728849885">
+              13728849885
+              <span class="text-xs opacity-60" data-zh="拨打">Call</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="about-tools-cursor" class="text-cursor-container about-tools mt-14 pt-10">
+        <p class="font-heading text-ink text-sm tracking-[0.2em] mb-6 uppercase font-bold" data-zh="工具与软件">Tools &amp; Software</p>
+        <div class="about-tools__static">
+          <div class="about-tools__icon-wrap">
+            <img src="assets/images/tools/capcut.png" alt="CapCut">
+            <span>CapCut</span>
+          </div>
+          <div class="about-tools__icon-wrap">
+            <img src="assets/images/tools/procreate.png" alt="Procreate">
+            <span>Procreate</span>
+          </div>
+          <div class="about-tools__icon-wrap">
+            <img src="assets/images/tools/photoshop.png" alt="Photoshop">
+            <span>Photoshop</span>
+          </div>
+          <div class="about-tools__icon-wrap">
+            <img src="assets/images/tools/figma.png" alt="Figma">
+            <span>Figma</span>
+          </div>
+          <div class="about-tools__icon-wrap">
+            <img src="assets/images/tools/cursor.png" alt="Cursor">
+            <span>Cursor</span>
+          </div>
+        </div>
+        <div class="text-cursor-inner" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="chapter-page" id="advertisement-design" aria-label="Advertisement Design">
+      <div class="chapter-page__frame">
+        <div class="double-rule"></div>
+        <div class="chapter-page__heading">
+          <h2 class="chapter-page__title star-title font-display" data-scroll-float data-zh="广告设计">Advertisement Design</h2>
+          <p class="chapter-page__note" data-zh="AI负责提效，人的思考掌管创意内核。">AI speeds the work; human thinking holds the creative core.</p>
+        </div>
+        <div class="double-rule"></div>
+      </div>
+    </section>
+
+    <section class="layout-section" id="zensit">
+      <h2 class="font-display text-ink text-3xl md:text-4xl text-center star-title" data-scroll-float data-zh="Zensit 安神茶饮｜品牌全案">Zensit Calming Tea｜Full Brand Campaign</h2>
+      <div class="double-rule my-6"></div>
+
+      <div class="block zensit-intro">
+        <div class="intro-grid">
+          <div class="stack">
+            <div class="zensit-plate">
+              <h3 class="block__title" data-zh="项目基础信息">Project Overview</h3>
+              <div class="slot slot--copy" aria-label="Project basics">
+                <div class="slot-copy">
+                  <p data-zh="项目类型：个人品牌创意全案｜周期：2周"><strong>Project type: </strong>Independent full-brand campaign. <strong>Timeline: </strong>2 weeks</p>
+                  <p data-zh="工具：即梦、PS、剪映、Procreate、Cursor"><strong>Tools: </strong>Jimeng, Photoshop, CapCut, Procreate, Cursor</p>
+                  <p data-zh="个人职责：独立完成品牌调研、营销策略、手绘Logo、包装视觉、TVC脚本与成片，输出多平台宣传物料。AI仅输出视觉草稿灵感，全部成品经过本人修改、重绘与调性校准。"><strong>My role: </strong>I completed the brand research, marketing strategy, hand-drawn logo, packaging, TVC script and finished cut, and campaign assets across platforms. AI supplied visual drafts only; I revised, redrew, and tuned the tone of every finished piece.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stack intro-grid__media">
+            <div class="slot slot--video" aria-label="Zensit TVC">
+              <div class="video-play video-play--inline" data-video="assets/videos/zensit-tvc.mp4" role="button" tabindex="0" aria-label="Play Zensit TVC">
+                <video class="video-play__preview" poster="assets/images/projects/zensit-tvc.jpg" src="assets/videos/zensit-tvc.mp4" playsinline preload="metadata"></video>
+                <span class="video-play__overlay">
+                  <span class="video-play__icon" aria-hidden="true"></span>
+                  <span class="video-play__label" data-zh="点击播放">Click to play</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zensit-fragment">
+          <div class="zensit-fragment__head">
+            <h3 class="zensit-fragment__title" data-zh="片段分镜尝试">Fragment Storyboard Attempt</h3>
+            <p class="zensit-fragment__hint" data-zh="向左滑动切换图片">Swipe left to change images</p>
+          </div>
+          <p class="zensit-fragment__line" data-zh="一段从工作疲惫走向松弛品茶的安静视觉旅程。">A quiet visual journey from work fatigue to calm relaxation.</p>
+          <div class="zensit-fragment__visual">
+            <div class="morph-slider morph-slider--paper" id="storyboard-morph" aria-label="Fragment storyboard">
+              <div class="morph-slider-stage" role="group" aria-roledescription="carousel" aria-label="Storyboard frames" tabindex="0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block__title" data-zh="项目简介">Project Intro</h3>
+        <div class="slot-copy">
+          <p data-zh="多数茶饮主打提神，本质是透支精力；市场营销偏向功能说教，缺少情绪共鸣。">Most teas sell a lift. That is just spending energy you do not have. Marketing leans on function and skips feeling.</p>
+          <p data-zh="创作卡点：跳出茶饮内卷赛道，为高压上班族，把抽象的精神松弛，转化为可感知的品牌视觉体验。">The bind: get off the crowded tea track. For people under office pressure, turn an abstract sense of ease into a brand you can see and feel.</p>
+          <p data-zh="Zensit定位情绪安抚型安神茶饮，不去夸大功效，面向长期面对屏幕、精神紧绷的上班族，以沉静松弛的视觉体系，为疲惫人群提供情绪释放出口。">Zensit is a calming tea for mood — not a louder claim about what the drink does. It is for people who live on screens and stay wound tight. A quiet visual system gives tired people a place to let go.</p>
+        </div>
+      </div>
+
+      <div class="block zensit-product">
+        <h3 class="block__title" data-zh="产品外观设计">Product Appearance Design</h3>
+        <div class="slot-copy zensit-product__concept">
+          <p data-zh="将苦橙花、水波与松弛情绪转化为包装视觉，让茶饮不只是功能饮品，也是一种安静的情绪陪伴。">Bitter-orange blossom, water, and a sense of ease become the pack — so the tea is not only a drink, but a quiet companion.</p>
+        </div>
+        <div class="zensit-product-stage" aria-label="Packaging design">
+          <figure class="zensit-product-hero">
+            <img src="assets/images/zensit/product/pack-open.jpg?v=1" alt="Zensit gift box open, with two tins in a cream insert" class="img-zoom">
+            <figcaption data-zh="礼盒开合 · 双罐陈列">Open gift set</figcaption>
+          </figure>
+          <div class="zensit-product-aside">
+            <figure class="zensit-product-can">
+              <img src="assets/images/zensit/product/tin.jpg?v=1" alt="Zensit tea tin — blossom, swing wordmark, and ripple" class="img-zoom">
+              <figcaption data-zh="茶罐 · 苦橙花与水波纹样">Tea tin — blossom and ripple</figcaption>
+            </figure>
+            <figure class="zensit-product-box">
+              <img src="assets/images/zensit/product/pack-closed.jpg?v=1" alt="Zensit gift box — wordmark and ripple on the lid" class="img-zoom">
+              <figcaption data-zh="礼盒封面 · 标识与涟漪">Gift box — wordmark and ripple</figcaption>
+            </figure>
+          </div>
+        </div>
+        <strong class="spec-split__heading zensit-product__details-title" data-zh="局部展示">Detail Studies</strong>
+        <div class="zensit-product-studies" aria-label="Packaging details">
+          <figure class="zensit-product-study zensit-product-study--mark">
+            <img src="assets/images/zensit/product/tin.jpg?v=1" alt="Zensit wordmark hanging on the blossom swing" class="img-zoom">
+            <figcaption data-zh="标识落点 · 秋千上的字标">Wordmark on the swing</figcaption>
+          </figure>
+          <figure class="zensit-product-study zensit-product-study--blossom">
+            <img src="assets/images/zensit/product/tin.jpg?v=1" alt="Bitter-orange blossom linework on the tin" class="img-zoom">
+            <figcaption data-zh="苦橙花线描">Blossom linework</figcaption>
+          </figure>
+          <figure class="zensit-product-study zensit-product-study--ripple">
+            <img src="assets/images/zensit/product/pack-closed.jpg?v=1" alt="Ripple graphic on the gift box face" class="img-zoom">
+            <figcaption data-zh="盒面水波与材质">Ripple and board on the box</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block__title" data-zh="海外媒体宣传物料">Overseas Media Campaign Materials</h3>
+        <div class="slot-copy text-left">
+          <p data-zh="Ins宣传物料：我针对海外Instagram平台定制四张专属宣传海报，跳出国内生活化种草的营销范式，采用极简构图、大面积留白与低饱和柔和色调，剔除繁杂装饰，以安静松弛的视觉节奏诠释品牌治愈舒缓的调性，贴合海外平台简约高级的审美偏好，产出差异化的海外品牌视觉物料。">• <strong>Instagram: </strong>I designed four exclusive posters for Instagram overseas. I stepped away from the domestic, lived-in seeding style and used a spare composition, wide white space, and a low-saturation, soft palette. Extra decoration came out. A quiet, unhurried rhythm carries the brand’s calming tone — closer to the simple, high-end look overseas platforms prefer, and a distinct set of brand visuals for that audience.</p>
+        </div>
+        <div class="xhs-stack-wrap">
+          <div class="xhs-stack" id="xhs-stack" aria-label="Instagram materials stack">
+            <figure class="xhs-stack__card">
+              <img src="assets/images/zensit/xhs-01.jpg" alt="Zensit outdoor canister and box">
+            </figure>
+            <figure class="xhs-stack__card">
+              <img src="assets/images/zensit/xhs-02.jpg" alt="Zensit tea hour still">
+            </figure>
+            <figure class="xhs-stack__card">
+              <img src="assets/images/zensit/xhs-03.jpg" alt="Zensit gift set unboxing">
+            </figure>
+            <figure class="xhs-stack__card">
+              <img src="assets/images/zensit/xhs-04.jpg" alt="Zensit lakeside picnic">
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block__title" data-zh="品牌主题海报设计">Brand Campaign Posters</h3>
+        <div class="slot slot--copy" aria-label="Brand poster design">
+          <div class="slot-copy">
+            <p data-zh="产出多张氛围感宣传海报，以上班族疲惫、放空休憩的场景为画面核心。借助柔和光影、自然植物元素传递放松情绪，适配社交媒体传播，传递品牌「慢下来，安放情绪」的价值主张。">I made a set of atmospheric posters built around office fatigue and the moment of zoning out. Soft light and plants carry the sense of rest. They are built for social, and they carry the brand line: slow down, and put your feelings down.</p>
+          </div>
+        </div>
+        <div class="poster-full">
+          <div class="morph-slider" id="poster-morph" aria-label="Zensit stamp poster">
+            <div class="morph-slider-stage" role="group" aria-roledescription="carousel" aria-label="Brand posters" tabindex="0"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block spec-block spec-identity">
+        <h3 class="block__title" data-zh="品牌视觉规范">Brand Visual System</h3>
+        <div class="slot-copy spec-intro">
+          <p data-zh="建立完整统一的视觉系统，锁定低饱和莫兰迪色系作为主色调；限定字体、装饰花卉元素，后续海报、包装、短片全部基于这套规范产出，保证全平台物料视觉调性统一，避免画面风格割裂。">I set a single visual system: a low-saturation Morandi palette, a limited type set, and a floral motif. Posters, packaging, and the film all come from that system, so the work holds together across platforms.</p>
+        </div>
+        <div class="spec-split">
+          <div class="spec-split__media">
+            <img src="assets/images/zensit/poster-stamp-portrait.jpg" alt="Zensit vertical stamp poster" class="img-zoom">
+          </div>
+          <div class="slot-copy spec-split__copy">
+            <div class="spec-split__part">
+              <strong class="spec-split__heading" data-zh="Zensit 主海报・设计说明">Zensit Hero Poster · Design Notes</strong>
+              <p data-zh="海报延续整套项目复古孔版版画的视觉风格，选用邮票边框作为构图框架。画面上方的苦橙花枝是茶饮核心原料，也是品牌治愈松弛的精神符号；下方荡漾的水波纹，用来具象化饮用茶饮之后内心慢慢平复放松的感受。标语传递出在喧嚣生活中短暂停歇的品牌理念。">• The poster stays with the project’s vintage stencil-print look and uses stamp perforations as the frame. Bitter-orange blossom at the top is both the tea’s key ingredient and the brand’s symbol of ease; the ripples below make visible the feeling of settling after a sip. The line is about a short pause in a noisy day.</p>
+              <p data-zh="色彩严格依照品牌视觉规范调配，统一版画颗粒肌理，保证海报和包装、宣传短片等物料视觉风格统一。">• Color is mixed to the brand spec, and the print grain stays consistent so the poster, packaging, and film feel like one set.</p>
+            </div>
+            <div class="spec-split__part">
+              <strong class="spec-split__heading" data-zh="创作心路">How I Got There</strong>
+              <p data-zh="做这张海报时，我不想只是简单摆放茶杯实物，而是希望跳出常规茶饮海报思路，去表现茶饮带来的情绪价值。">• I did not want a cup sitting on a table. I wanted to get past the usual tea poster and show what the drink does for how you feel.</p>
+              <p data-zh="我选定苦橙花作为贯穿整套项目的标志性元素，用水波纹把看不见的平静感变成可视化图形；邮票边框是为了给这份休憩增添一点仪式感，配色反复调试对比，最终完成从一杯草本茶，到一处精神休憩空间的视觉表达。">• I made bitter-orange blossom the through-line, turned an invisible calm into ripples, and used the stamp frame to give that pause a little ceremony. After a lot of color tests, the piece moved from a cup of herbal tea to a place to rest your head.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block spec-block">
+        <h3 class="block__title" data-zh="LOGO设计演变">Logo Evolution</h3>
+        <div class="spec-frame">
+          <div class="slot slot--copy" aria-label="Logo design evolution">
+            <div class="slot-copy">
+              <p data-zh="围绕Zensit「松弛、沉静、疗愈」的品牌内核，开展多轮草图迭代。从粗线条的文字标识，逐步简化笔画细节，搭配苦橙花符号作为视觉印记。不断调整字体字重、图形大小比例，最终达成柔和轻盈、简约干净的最终版本，传递舒缓安神的品牌气质。">Working from Zensit’s core — ease, quiet, repair — I ran several rounds of sketches. A heavy wordmark became lighter, stroke by stroke, with the bitter-orange blossom as a mark. I kept adjusting weight and scale until the lockup felt soft, light, and clean: the calming register of the brand.</p>
+            </div>
+          </div>
+        </div>
+        <div class="spec-frame logo-evo-bleed">
+          <div class="logo-evo" aria-label="Logo iteration sketches">
+            <img src="assets/images/zensit/logo-01.png" alt="Zensit logo study — swing over water" class="img-zoom">
+            <img src="assets/images/zensit/logo-02.png" alt="Zensit logo study — swing over a teacup" class="img-zoom">
+            <img src="assets/images/zensit/logo-03.png" alt="Zensit logo study — wordmark as a swing" class="img-zoom">
+            <img src="assets/images/zensit/logo-04.png" alt="Zensit logo study — wordmark on a blossom swing" class="img-zoom">
+          </div>
+          <div
+            class="elastic-slider"
+            data-elastic-slider
+            data-default="50"
+            data-min="0"
+            data-max="100"
+            aria-label="Elastic slider"
+          >
+            <div class="elastic-slider__row">
+              <span class="elastic-slider__icon elastic-slider__icon--left" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 5 L8 12 L15 19"></path>
+                </svg>
+              </span>
+              <div class="elastic-slider__root">
+                <div class="elastic-slider__track-wrap">
+                  <div class="elastic-slider__track">
+                    <div class="elastic-slider__range"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="elastic-slider__icon elastic-slider__icon--right" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 5 L16 12 L9 19"></path>
+                </svg>
+              </span>
+            </div>
+            <p class="elastic-slider__value">50</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block__title" data-zh="核心挑战与解决方案">Core Challenges and Solutions</h3>
+        <div class="stack" aria-label="Challenges and solutions">
+          <div class="zensit-step">
+            <strong class="spec-split__heading" data-zh="1. AI素材风格浮动，很难维持品牌统一松弛调性">1. AI looks drifted; a single unhurried brand look was hard to hold</strong>
+            <div class="stepper" data-stepper>
+              <div class="step-circle-container">
+                <div class="step-indicator-row">
+                  <button type="button" class="step-indicator" aria-label="Step 1"><span class="step-indicator-inner">1</span></button>
+                  <div class="step-connector"><div class="step-connector-inner"></div></div>
+                  <button type="button" class="step-indicator" aria-label="Step 2"><span class="step-indicator-inner">2</span></button>
+                  <div class="step-connector"><div class="step-connector-inner"></div></div>
+                  <button type="button" class="step-indicator" aria-label="Step 3"><span class="step-indicator-inner">3</span></button>
+                </div>
+                <div class="step-content-default">
+                  <div class="step-default">
+                    <div class="step-panel is-active">
+                      <div class="slot-copy">
+                        <p data-zh="1. AI素材风格浮动，很难维持品牌统一松弛调性">• <strong>Challenge 1: </strong>AI looks drifted; a single unhurried brand look was hard to hold</p>
+                      </div>
+                    </div>
+                    <div class="step-panel">
+                      <div class="slot-copy">
+                        <p data-zh="AI只做草稿参考，不复用成品；逐张重绘调色，统一莫兰迪低饱和色系，人工把控每一张画面氛围，实现全案视觉统一。">• <strong>Fix: </strong>AI stayed a draft. I never reused it as a finish. I redrew and recast color still by still, locked a low-saturation Morandi palette, and judged the mood of every frame so the campaign would read as one.</p>
+                      </div>
+                    </div>
+                    <div class="step-panel">
+                      <div class="zensit-compare" aria-label="Before and after frame comparisons">
+                        <div class="slot-copy">
+                          <p data-zh="图1和图3画风虽然好看，但容易跑型穿帮；加强光影、适当强调外轮廓后，使形状确定，这样达到了画面流畅的效果。">Figs. 1 and 3 look appealing, but the forms easily drift and break continuity. Strengthening light and shadow, and gently reinforcing the outer contour, locked the shapes in place — and the sequence began to read smoothly.</p>
+                        </div>
+                        <div class="zensit-compare__pair">
+                          <figure>
+                            <img src="assets/images/zensit/compare/compare-01.jpg?v=1" alt="Fig. 1 — office still before contour pass" class="img-zoom">
+                            <figcaption data-zh="图1">Fig. 1</figcaption>
+                          </figure>
+                          <figure>
+                            <img src="assets/images/zensit/compare/compare-02.jpg?v=1" alt="Fig. 2 — office still after light, shadow, and contour" class="img-zoom">
+                            <figcaption data-zh="图2">Fig. 2</figcaption>
+                          </figure>
+                        </div>
+                        <div class="zensit-compare__pair">
+                          <figure>
+                            <img src="assets/images/zensit/compare/compare-03.jpg?v=1" alt="Fig. 3 — picnic still before contour pass" class="img-zoom">
+                            <figcaption data-zh="图3">Fig. 3</figcaption>
+                          </figure>
+                          <figure>
+                            <img src="assets/images/zensit/compare/compare-04.jpg?v=1" alt="Fig. 4 — picnic still after light, shadow, and contour" class="img-zoom">
+                            <figcaption data-zh="图4">Fig. 4</figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-container">
+                  <div class="footer-nav">
+                    <button type="button" class="back-button">Previous</button>
+                    <button type="button" class="next-button">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="zensit-step">
+            <strong class="spec-split__heading" data-zh="2. TVC短片疲惫到舒缓的情绪转折难以视觉落地，叙事容易生硬">2. The TVC turn from tired to ease was hard to make visible, and the story went stiff</strong>
+            <div class="stepper" data-stepper>
+              <div class="step-circle-container">
+                <div class="step-indicator-row">
+                  <button type="button" class="step-indicator" aria-label="Step 1"><span class="step-indicator-inner">1</span></button>
+                  <div class="step-connector"><div class="step-connector-inner"></div></div>
+                  <button type="button" class="step-indicator" aria-label="Step 2"><span class="step-indicator-inner">2</span></button>
+                  <div class="step-connector"><div class="step-connector-inner"></div></div>
+                  <button type="button" class="step-indicator" aria-label="Step 3"><span class="step-indicator-inner">3</span></button>
+                </div>
+                <div class="step-content-default">
+                  <div class="step-default">
+                    <div class="step-panel is-active">
+                      <div class="slot-copy">
+                        <p data-zh="2. TVC短片疲惫到舒缓的情绪转折难以视觉落地，叙事容易生硬">• <strong>Challenge 2: </strong>The TVC turn from tired to ease was hard to make visible, and the story went stiff</p>
+                      </div>
+                    </div>
+                    <div class="step-panel">
+                      <div class="slot-copy">
+                        <p data-zh="拆解情绪节点，细化分镜头，调试人物状态、镜头时长与BGM，迭代多版样片对比，达成顺滑情绪叙事。">• <strong>Fix: </strong>I broke the emotion into beats, refined the boards, then tuned the character’s state, shot length, and music. Several cuts later, the arc felt smooth.</p>
+                      </div>
+                    </div>
+                    <div class="step-panel">
+                      <div class="zensit-compare" aria-label="TVC transition studies">
+                        <div class="zensit-compare__pair">
+                          <figure>
+                            <img src="assets/images/zensit/challenge/cut-perspective.jpg" alt="Costume-change transition still" class="img-zoom">
+                            <figcaption data-zh="服装变化过渡">Costume-change transition</figcaption>
+                          </figure>
+                          <figure>
+                            <img src="assets/images/zensit/challenge/costume-change.jpg" alt="Perspective-cut transition still" class="img-zoom">
+                            <figcaption data-zh="切视角过渡">Perspective-cut transition</figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-container">
+                  <div class="footer-nav">
+                    <button type="button" class="back-button">Previous</button>
+                    <button type="button" class="next-button">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="zensit-step">
+            <strong class="spec-split__heading" data-zh="3. 多平台画幅、审美语境差异，易出现品牌视觉割裂">3. Different frames and tastes across platforms can split the brand</strong>
+            <div class="slot-copy">
+              <p data-zh="先锁定品牌色、图形、字体的统一规范，再适配各平台调整构图排版，做到内核统一，形式适配媒介。">I locked color, mark, and type first, then adapted layout to each platform — one core, a form that fits the medium.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block__title" data-zh="项目复盘总结">Project Recap</h3>
+        <div class="slot-copy">
+          <p data-zh="AI可以高效产出创意草稿，但无法自动维持整套品牌的统一调性，必须依靠人工完成风格校准。做跨平台品牌物料，要先建立底层视觉规范，再适配不同媒介，才能避免品牌形象割裂。">AI can draft ideas fast. It cannot hold a whole brand’s tone on its own — that still takes a person. For work across platforms, lock the visual system first, then adapt, or the brand splits.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter-page" id="game-prototype" aria-label="Game Prototype">
+      <div class="chapter-page__frame">
+        <div class="double-rule"></div>
+        <div class="chapter-page__heading">
+          <h2 class="chapter-page__title star-title font-display" data-scroll-float data-zh="游戏原型">Game Prototype</h2>
+          <p class="chapter-page__note" data-zh="接纳观点碰撞，在分歧中打磨更好的方案。">Welcome colliding views; better work is honed in disagreement.</p>
+        </div>
+        <div class="double-rule"></div>
+      </div>
+    </section>
+
+    <section class="layout-section" id="running-kueh">
+      <h2 class="font-display text-ink text-3xl md:text-4xl text-center star-title" data-scroll-float data-zh="Running‑Kueh｜像素跑酷游戏Demo">Running‑Kueh｜Pixel Runner Game Demo</h2>
+      <div class="double-rule my-6"></div>
+
+      <strong class="spec-split__heading kueh-intro" data-zh="Running粿｜潮汕红桃粿像素跑酷Demo">Running-Kueh｜A Teochew Red Peach Kueh Pixel Runner Demo</strong>
+
+      <div class="kueh-screen">
+        <strong class="spec-split__heading" data-zh="一、项目基础信息">I. Project Overview</strong>
+        <div class="spec-split">
+          <div class="spec-split__media kueh-pixel-wrap">
+            <img src="assets/images/kueh/hero-front.gif" alt="Red peach kueh pixel protagonist" class="kueh-pixel" width="240" height="240">
+          </div>
+          <div class="slot-copy spec-split__copy">
+            <p data-zh="项目类型：联合作业像素游戏原型Demo｜周期：2周">• <strong>Project type: </strong>A collaborative pixel-game prototype. <strong>Timeline: </strong>2 weeks</p>
+            <p data-zh="工具：即梦、PS、Procreate、Cursor">• <strong>Tools: </strong>Jimeng, Photoshop, Procreate, Cursor</p>
+            <p data-zh="个人职责：独立完成民俗调研、游戏策划，全套角色道具场景手绘；Cursor输出代码初稿，由本人完成调试，产出可游玩交互Demo。">• <strong>My role: </strong>I did the folklore research and game design myself, and drew the full set of characters, props, and scenes. Cursor drafted the first pass of the code; I debugged it and shipped a playable interactive demo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="kueh-screen">
+        <strong class="spec-split__heading" data-zh="项目简介">Project Intro</strong>
+        <div class="kueh-folk__layout">
+          <div class="kueh-folk__media">
+            <div class="kueh-folk-stage">
+              <div
+                class="circular-gallery"
+                data-circular-gallery
+                data-bend="2.2"
+                data-text-color="#222222"
+                data-border-radius="0.04"
+                tabindex="0"
+                role="region"
+                aria-label="Circular folk-scene gallery. Use left and right arrow keys to navigate."
+              >
+                <img
+                  class="circular-gallery__fallback"
+                  src="assets/images/kueh/folk-01.jpg"
+                  alt="Steaming red peach kueh"
+                >
+                <img hidden data-gallery-src="assets/images/kueh/folk-01.jpg" data-text="Steam" data-zh="蒸制" alt="Steaming red peach kueh">
+                <img hidden data-gallery-src="assets/images/kueh/folk-02.jpg" data-text="Filling" data-zh="馅料" alt="Preparing red peach kueh filling">
+                <img hidden data-gallery-src="assets/images/kueh/folk-03.jpg" data-text="Molding" data-zh="印模" alt="Molding red peach kueh by hand">
+                <img hidden data-gallery-src="assets/images/kueh/folk-04.jpg" data-text="Kitchen" data-zh="灶台" alt="Red peach kueh folklore kitchen scenes">
+              </div>
+            </div>
+          </div>
+          <div class="slot-copy spec-split__copy kueh-folk__copy">
+            <p data-zh="针对传统民俗科普内容受众门槛高的问题，将潮汕红桃粿民俗与像素跑酷结合，以游戏化形式完成本土文化年轻化传播。已落地收集、障碍躲避、民俗答题整套核心玩法。">Folk-education content is hard for most people to get into. This project puts Teochew red peach kueh inside a pixel runner, so a local foodway can reach younger audiences through play. Collecting, dodging, and a folk quiz are all in.</p>
+          </div>
+        </div>
+      </div>
+
+      <strong class="spec-split__heading kueh-intro" data-zh="三、核心难点与解决方案">III. Core Problems and Solutions</strong>
+
+      <div class="kueh-screen kueh-screen--tight">
+        <strong class="spec-split__heading" data-zh="重点问题：AI生成地图逻辑混乱，出现穿模、路径识别错误">Key Problem: AI map logic was a mess — clipping and bad pathing</strong>
+        <div class="stepper" data-stepper>
+          <div class="step-circle-container">
+            <div class="step-indicator-row">
+              <button type="button" class="step-indicator" aria-label="Step 1"><span class="step-indicator-inner">1</span></button>
+              <div class="step-connector"><div class="step-connector-inner"></div></div>
+              <button type="button" class="step-indicator" aria-label="Step 2"><span class="step-indicator-inner">2</span></button>
+              <div class="step-connector"><div class="step-connector-inner"></div></div>
+              <button type="button" class="step-indicator" aria-label="Step 3"><span class="step-indicator-inner">3</span></button>
+            </div>
+            <div class="step-content-default">
+              <div class="step-default">
+                <div class="step-panel is-active">
+                  <div class="slot-copy">
+                    <p data-zh="重点问题：AI生成地图逻辑混乱，出现穿模、路径识别错误">• <strong>Key Problem: </strong>AI map logic was a mess — clipping and bad pathing</p>
+                    <p data-zh="AI产出的瓦片地图无法区分可通行与禁区，角色行走错位、穿墙、卡模问题频发。">• AI tilemaps could not tell walkable floor from blocked space. The character drifted, walked through walls, and snagged on geometry.</p>
+                  </div>
+                </div>
+                <div class="step-panel">
+                  <div class="slot-copy">
+                    <p data-zh="解决：在PS制作三色标记图层，分区界定地板、桌面、水池通行范围，约束地图行走逻辑；校验无误后删除标记层，手绘完善最终地图，彻底解决路径bug。">• <strong>Fix: </strong>I built a three-color markup layer in Photoshop to mark floor, counter, and sink as walkable zones, then bound the pathing to those zones. Once it checked out I deleted the markup and finished the map by hand, which killed the pathing bugs.</p>
+                  </div>
+                </div>
+                <div class="step-panel">
+                  <div class="kueh-map-pair" aria-label="Kitchen map layouts">
+                    <figure>
+                      <img src="assets/images/kueh/map-side.png?v=1" alt="Kitchen stage — side layout" class="img-zoom">
+                    </figure>
+                    <figure>
+                      <img src="assets/images/kueh/map-plan.jpg?v=1" alt="Kitchen stage — plan layout" class="img-zoom">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-container">
+              <div class="footer-nav">
+                <button type="button" class="back-button">Previous</button>
+                <button type="button" class="next-button">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kueh-screen kueh-screen--dome">
+        <strong class="spec-split__heading" data-zh="四、项目产出">IV. What Shipped</strong>
+        <div class="kueh-output">
+          <div class="slot-copy spec-split__copy">
+            <p data-zh="原创全套手绘像素美术资产：完成红桃粿、鼠壳粿双角色 IP 绘制，制作收集道具、障碍物、游戏场景、关卡 UI 等全套素材资源。">• <strong>A full original pixel-art set: </strong>both character IPs — Taotao (red peach kueh) and A-Ke (shu-ke kueh) — plus collectibles, hazards, scenes, and level UI.</p>
+            <p data-zh="可在线运行的完整交互 Demo：落地游戏游玩逻辑、潮汕民俗答题题库，完成网页部署上线，支持浏览器直接体验。">• <strong>A complete playable demo online: </strong>runner logic, the Teochew folk quiz, deployed to the web so you can play it in a browser.</p>
+            <p data-zh="远期迭代规划方向：骑楼主题关卡、民俗文化图鉴、文创衍生周边，现阶段为概念方案，暂未产出可视化成品。">• <strong>Later work, still concept-only: </strong>a qilou-themed stage, a folklore encyclopedia, and merch. No visuals for these yet.</p>
+          </div>
+          <div class="kueh-output__gallery">
+            <div
+              class="dome-gallery"
+              data-dome-gallery
+              data-fit="0.5"
+              data-min-radius="600"
+              data-max-vertical="5"
+              data-segments="35"
+              data-drag-dampening="2"
+              data-grayscale="false"
+              data-overlay="#f8f8f6"
+              data-opened-width="400px"
+              data-opened-height="400px"
+              aria-label="Pixel prop assets"
+            >
+              <img src="assets/images/kueh/props/bottle.png?v=4" alt="Seasoning jar pixel prop">
+              <img src="assets/images/kueh/props/celery.png?v=4" alt="Celery pixel prop">
+              <img src="assets/images/kueh/props/grass.png?v=4" alt="Cudweed pixel prop">
+              <img src="assets/images/kueh/props/rice.png?v=4" alt="Sticky rice pixel prop">
+              <img src="assets/images/kueh/props/peanut.png?v=4" alt="Peanut pixel prop">
+              <img src="assets/images/kueh/props/spoon.png?v=4" alt="Spatula pixel prop">
+              <img src="assets/images/kueh/props/mushroom.png?v=4" alt="Dried shiitake mushroom pixel prop">
+              <img src="assets/images/kueh/props/sugar.png?v=4" alt="Sugar pixel prop">
+              <img src="assets/images/kueh/props/water.png?v=4" alt="Water pixel prop">
+              <img src="assets/images/kueh/props/soap.png?v=4" alt="Tofu stick pixel prop">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kueh-screen">
+        <strong class="spec-split__heading" data-zh="五、项目复盘反思">V. What I Would Do Differently</strong>
+        <div class="slot-copy spec-split__copy">
+          <p data-zh="小众地域文化内容无法依赖AI直接产出，必须通过人工调研与校验规避文化偏差，保证内容严谨度。AI代码仅为基础参考，功能落地、逻辑优化仍需人工主导调试。">• Niche regional culture does not come out of AI cleanly. It takes human research and checking to catch cultural slips. AI code was a sketch; making it work still took me.</p>
+          <p data-zh="跑酷游戏可以激发大众兴趣，但不能替代深度科普。">• A runner can get people interested. It cannot stand in for deeper education.</p>
+          <p data-zh="休闲跑酷的科普承载量有限，后续可通过图鉴系统、新主题关卡拓展内容深度。本项目为个人原型Demo，未正式上线，整体玩法仍有迭代优化空间。">• A casual runner can only carry so much. An encyclopedia and new stages could go further. This is a personal prototype, not a live product, and the play still has room to grow.</p>
+        </div>
+      </div>
+
+      <div class="kueh-screen">
+        <strong class="spec-split__heading" data-zh="在线试玩">Play Demo</strong>
+        <div class="kueh-play">
+          <iframe src="https://cs97rkmwb5-bot.github.io/1111/" title="Running-Kueh playable demo" loading="lazy" allowfullscreen></iframe>
+          <p class="slot-copy kueh-play__link">
+            <a href="https://cs97rkmwb5-bot.github.io/1111/" target="_blank" rel="noopener noreferrer">https://cs97rkmwb5-bot.github.io/1111/</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
+    <section class="chapter-page" id="projects" aria-label="Client-based Works">
+      <div class="chapter-page__frame">
+        <div class="double-rule"></div>
+        <div class="chapter-page__heading">
+          <h2 class="chapter-page__title star-title font-display" data-scroll-float data-zh="商业委托">Client-based Works</h2>
+          <p class="chapter-page__note" data-zh="不盲从成品，愿意反复重绘校准视觉调性。">Do not take a finished piece as given; redraw until the visual tone holds.</p>
+        </div>
+        <div class="double-rule"></div>
+      </div>
+    </section>
+
+    <section id="projects-works" class="section-full flex items-center px-10 md:px-16 py-32">
+      <div class="w-full max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+          <article class="news-grid-item">
+            <a href="#project-details" class="project-overview-thumb block" aria-label="View the Twenty-Four Views of Yuntai revival project">
+              <img src="assets/images/projects/museum.jpg" alt="Reviving the Twenty-Four Views of Yuntai" class="w-full aspect-video object-cover bg-paper">
+            </a>
+            <h3 class="news-grid-item__title"><a href="#project-details" data-zh="云台二十四景活化">Reviving the Twenty-Four Views of Yuntai</a></h3>
+            <p class="font-body text-sm text-body" data-zh="为连云港博物馆将历史线稿转为写实场景的关键帧与转场影片。">Key frames and transition films converting historical line art into photoreal scenes for Lianyungang Museum.</p>
+          </article>
+          <article class="news-grid-item">
+            <a href="#project-pantum" class="project-overview-thumb block" aria-label="View the Pantum promotional film">
+              <img src="assets/images/projects/pantum.jpg" alt="Pantum printer promotional film" class="w-full aspect-video object-cover bg-paper">
+            </a>
+            <h3 class="news-grid-item__title"><a href="#project-pantum" data-zh="奔图打印机宣传片">Pantum Printer Promotional Film</a></h3>
+            <p class="font-body text-sm text-body" data-zh="AIGC关键帧与成片，以工厂场景承载品牌制造叙事。">AIGC key frames and a finished film that uses a factory setting to carry the brand’s manufacturing story.</p>
+          </article>
+          <article class="news-grid-item">
+            <a href="#project-scau" class="project-overview-thumb block" aria-label="View the commercial IP design">
+              <img src="assets/images/projects/scau.jpg" alt="Commercial IP design" class="w-full aspect-video object-cover bg-paper">
+            </a>
+            <h3 class="news-grid-item__title"><a href="#project-scau" data-zh="商业IP设计">Commercial IP Design</a></h3>
+            <p class="font-body text-sm text-body" data-zh="原创角色与短片《我要下班！》，围绕年轻上班情绪展开。">An original character and short animation—“I Want to Clock Out!”—built around a young, workday mood.</p>
+          </article>
+          <article class="news-grid-item">
+            <a href="#project-spdb" class="project-overview-thumb block" aria-label="View the SPDB Start of Spring launch">
+              <img src="assets/images/projects/spdb.jpg" alt="SPDB Zhuoxin photography contest — Start of Spring launch" class="w-full aspect-video object-cover bg-paper">
+            </a>
+            <h3 class="news-grid-item__title"><a href="#project-spdb" data-zh="浦发银行卓信摄影大赛｜立春启动">SPDB Zhuoxin Photography Contest — Start of Spring</a></h3>
+            <p class="font-body text-sm text-body" data-zh="古风AIGC动画关键帧与成片剪辑，用于大赛启动传播。">Classical-style AIGC animation key frames and a full edit supporting the contest launch.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="project-details" class="section-full flex items-center px-10 md:px-16 py-32">
+      <div class="w-full max-w-6xl mx-auto">
+        <h2 class="font-display text-ink text-3xl md:text-4xl text-center star-title" data-scroll-float data-zh="云台二十四景活化">Reviving the Twenty-Four Views of Yuntai</h2>
+        <div class="double-rule my-6"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div class="project-gallery">
+            <button type="button" class="video-play project-gallery__main aspect-[4/3] bg-paper" data-video="assets/videos/museum-revival.mp4" aria-label="Play the main revival film">
+              <video class="video-play__preview" src="assets/videos/museum-revival.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+              <span class="video-play__overlay">
+                <span class="video-play__icon" aria-hidden="true"></span>
+                <span class="video-play__label" data-zh="点击播放">Click to play</span>
+              </span>
+            </button>
+            <div class="project-gallery__details-block">
+              <p class="project-gallery__details-note">Line art to photoreal</p>
+              <div class="project-gallery__details">
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/museum-d1.png" alt="Historical line art" class="img-zoom project-gallery__detail-img">
+                </div>
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/museum-d2.png" alt="Line art to photoreal — sample 1" class="img-zoom project-gallery__detail-img">
+                </div>
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/museum-d3.png" alt="Line art to photoreal — sample 2" class="img-zoom project-gallery__detail-img">
+                </div>
+              </div>
+            </div>
+            <p class="project-gallery__caption">Fig. Main AIGC revival film of the museum’s paintings · Click to play · Lianyungang Museum collaboration</p>
+          </div>
+
+          <div class="prose-block drop-cap font-body text-sm md:text-base">
+            <p data-zh="项目：云台二十四景活化"><strong class="font-heading text-ink">Project: </strong>Reviving the Twenty-Four Views of Yuntai</p>
+            <p data-zh="客户：连云港博物馆"><strong class="font-heading text-ink">Client: </strong>Lianyungang Museum</p>
+            <p data-zh="职责：完成历史线稿转写实场景的关键帧，并制作画面之间的转场影片。"><strong class="font-heading text-ink">Role: </strong>I produced the key frames that turn historical line art into photoreal scenes, and built the transition films between them.</p>
+            <p data-zh="难点与解决：线稿转写实后边缘生硬、缺少生气。我重写写实提示词，让画面生成为完整场景，去掉僵硬轮廓。"><strong class="font-heading text-ink">Challenge &amp; solution: </strong>Line-to-photoreal conversion left hard, lifeless edges. I rewrote the photoreal prompts so the images generated as complete scenes, without the stiff outlines.</p>
+            <p data-zh="成果：二十四景均以贴合历史氛围的风格还原。关键帧与转场进入展厅多媒体播放，提升参观体验，客户认可交付结果。"><strong class="font-heading text-ink">Outcome: </strong>All twenty-four classical views were restored in a style consistent with the historical atmosphere. The key frames and transitions went into the gallery’s multimedia display and improved the visitor experience. The client was pleased with the result.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project-pantum" class="section-full flex items-center px-10 md:px-16 py-32">
+      <div class="w-full max-w-6xl mx-auto">
+        <h2 class="font-display text-ink text-3xl md:text-4xl text-center star-title" data-scroll-float data-zh="奔图打印机宣传片">Pantum Printer Promotional Film</h2>
+        <div class="double-rule my-6"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div class="project-gallery">
+            <button type="button" class="video-play project-gallery__main aspect-[4/3] bg-paper" data-video="assets/videos/pantum.mp4" aria-label="Play the Pantum promotional film">
+              <video class="video-play__preview" src="assets/videos/pantum.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+              <span class="video-play__overlay">
+                <span class="video-play__icon" aria-hidden="true"></span>
+                <span class="video-play__label" data-zh="点击播放">Click to play</span>
+              </span>
+            </button>
+            <div class="project-gallery__details-block project-gallery__details-block--stacked">
+              <div class="project-gallery__details">
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/pantum-d1.png" alt="Printer factory study 1" class="img-zoom project-gallery__detail-img">
+                </div>
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/pantum-d2.png" alt="Printer factory study 2" class="img-zoom project-gallery__detail-img">
+                </div>
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/pantum-d3.png" alt="Printer factory study 3" class="img-zoom project-gallery__detail-img">
+                </div>
+              </div>
+              <p class="project-gallery__figure-note">Printer factory studies</p>
+            </div>
+            <p class="project-gallery__caption">Fig. Pantum product film · Click to play · Key frames and boards</p>
+          </div>
+
+          <div class="prose-block drop-cap font-body text-sm md:text-base">
+            <p data-zh="项目：奔图打印机宣传片"><strong class="font-heading text-ink">Project: </strong>Pantum Printer Promotional Film</p>
+            <p data-zh="客户：奔图"><strong class="font-heading text-ink">Client: </strong>Pantum</p>
+            <p data-zh="职责：用AIGC完成关键帧与宣传成片。"><strong class="font-heading text-ink">Role: </strong>I used AIGC to produce the key frames and the finished promotional film.</p>
+            <p data-zh="难点与解决：打印机内部零件过密，生成画面反复畸变。我将概念改为工厂场景，仍能承载产品故事，并避开细节出错。"><strong class="font-heading text-ink">Challenge &amp; solution: </strong>The printer’s internal parts are dense; generated frames kept distorting. I shifted the concept to a factory setting that still carried the product story, and avoided the detail bugs.</p>
+            <p data-zh="成果：视觉统一的短片，讲清制造理念，用于线上推广，达到预期传播效果。"><strong class="font-heading text-ink">Outcome: </strong>A visually consistent short that lays out the manufacturing idea, delivered for online promotion and meeting the intended campaign effect.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project-scau" class="section-full flex items-center px-10 md:px-16 py-32">
+      <div class="w-full max-w-6xl mx-auto">
+        <h2 class="font-display text-ink text-3xl md:text-4xl text-center star-title" data-scroll-float data-zh="商业IP设计">Commercial IP Design</h2>
+        <div class="double-rule my-6"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div class="project-gallery">
+            <button type="button" class="video-play project-gallery__main aspect-[4/3] bg-paper" data-video="assets/videos/scau-offwork.mp4" aria-label="Play the I Want to Clock Out introduction film">
+              <video class="video-play__preview" src="assets/videos/scau-offwork.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+              <span class="video-play__overlay">
+                <span class="video-play__icon" aria-hidden="true"></span>
+                <span class="video-play__label" data-zh="点击播放">Click to play</span>
+              </span>
+            </button>
+            <div class="project-gallery__details-block project-gallery__details-block--stacked">
+              <div class="project-gallery__details">
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/scau-d1.png" alt="Otter character expression 1" class="img-zoom project-gallery__detail-img">
+                </div>
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/scau-d2.png" alt="Otter character expression 2" class="img-zoom project-gallery__detail-img">
+                </div>
+                <div class="project-gallery__detail-frame">
+                  <img src="assets/images/projects/scau-d3.png" alt="Otter character expression 3" class="img-zoom project-gallery__detail-img">
+                </div>
+              </div>
+              <p class="project-gallery__figure-note">Otter expression studies</p>
+            </div>
+            <p class="project-gallery__caption">Fig. Commercial IP “I Want to Clock Out!” introduction film · Click to play · Character and animation</p>
+          </div>
+
+          <div class="prose-block drop-cap font-body text-sm md:text-base">
+            <p data-zh="项目：商业IP设计——《我要下班！》"><strong class="font-heading text-ink">Project: </strong>Commercial IP Design — “I Want to Clock Out!”</p>
+            <p data-zh="客户：商业品牌"><strong class="font-heading text-ink">Client: </strong>Commercial brand</p>
+            <p data-zh="职责：完成IP设计、分镜、关键帧绘制与动画成片。"><strong class="font-heading text-ink">Role: </strong>I designed the IP, storyboarded, drew the key frames, and produced the finished short animation.</p>
+            <p data-zh="难点与解决：要在极短时长里立住角色并落到情绪点。我压缩叙事、强化表情与动作，剪辑节奏贴合上班族情绪，让片子更容易记住。"><strong class="font-heading text-ink">Challenge &amp; solution: </strong>I had to establish the character and land an emotional beat in a very short runtime. I stripped the narrative down, pushed expression and motion, and cut to a rhythm that leaned into the office-worker mood so the piece would stick.</p>
+            <p data-zh="成果：形成完整、可识别的IP介绍片，适合社交与年轻向品牌传播，并具备后续商业延展空间。"><strong class="font-heading text-ink">Outcome: </strong>A complete IP introduction with a consistent, recognizable look, ready for social and youth-facing brand work, and with room to extend commercially.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project-spdb" class="section-full flex items-center px-10 md:px-16 py-32">
+      <div class="w-full max-w-6xl mx-auto">
+        <h2 class="font-display text-ink text-3xl md:text-4xl text-center star-title" data-scroll-float data-zh="浦发银行卓信摄影大赛｜立春启动">SPDB Zhuoxin Photography Contest — Start of Spring</h2>
+        <div class="double-rule my-6"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div class="project-gallery">
+            <button type="button" class="video-play project-gallery__main aspect-[4/3] bg-paper" data-video="assets/videos/spdb-lichun.mp4" aria-label="Play the Start of Spring launch film">
+              <video class="video-play__preview" src="assets/videos/spdb-lichun.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+              <span class="video-play__overlay">
+                <span class="video-play__icon" aria-hidden="true"></span>
+                <span class="video-play__label" data-zh="点击播放">Click to play</span>
+              </span>
+            </button>
+            <div class="project-gallery__details">
+              <div class="project-gallery__detail-frame">
+                <img src="assets/images/projects/spdb-d1.png" alt="Start of Spring launch — spring-travel scene at a high-speed rail station" class="img-zoom project-gallery__detail-img">
+              </div>
+              <div class="project-gallery__detail-frame">
+                <img src="assets/images/projects/spdb-d2.png" alt="Start of Spring launch — Lunar New Year market" class="img-zoom project-gallery__detail-img">
+              </div>
+              <div class="project-gallery__detail-frame">
+                <img src="assets/images/projects/spdb-d3.png" alt="Start of Spring launch — outdoor screen mockup" class="img-zoom project-gallery__detail-img">
+              </div>
+            </div>
+            <p class="project-gallery__caption">Fig. SPDB Zhuoxin National Photography Contest — “Start of Spring” launch film · Click to play</p>
+          </div>
+
+          <div class="prose-block drop-cap font-body text-sm md:text-base">
+            <p data-zh="项目：浦发银行卓信全国摄影大赛——立春启动"><strong class="font-heading text-ink">Project: </strong>SPDB Zhuoxin National Photography Contest — Start of Spring Launch</p>
+            <p data-zh="客户：上海浦东发展银行"><strong class="font-heading text-ink">Client: </strong>Shanghai Pudong Development Bank (SPDB)</p>
+            <p data-zh="职责：用AIGC制作古风动画关键帧，完成动画并统筹成片剪辑。"><strong class="font-heading text-ink">Role: </strong>I used AIGC to produce key frames for classical-style animation sequences, completed the animation, and oversaw the full edit.</p>
+            <p data-zh="难点与解决：古风场景常出现画面瑕疵，镜头衔接生硬。我收紧提示词、用配套参考搭场景，并以同色转场把接缝抹平。"><strong class="font-heading text-ink">Challenge &amp; solution: </strong>Period scenes often came back with visual artifacts, and cuts between scenes felt abrupt. I tightened the prompts, built scenes from matching reference, and used same-color transitions to smooth the joins.</p>
+            <p data-zh="成果：启动片在抖音播放，获得1700次观看，扩大了大赛曝光，符合品牌传播要求。"><strong class="font-heading text-ink">Outcome: </strong>The launch film ran on Douyin and reached 1,700 views, widening exposure for the contest and meeting the brand brief.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter-page" id="illustration" aria-label="Hand-drawn Art">
+      <div class="chapter-page__frame">
+        <div class="double-rule"></div>
+        <div class="chapter-page__heading">
+          <h2 class="chapter-page__title star-title font-display" data-scroll-float data-zh="手绘作品">Hand-drawn Art</h2>
+          <p class="chapter-page__note" data-zh="平衡浪漫创意，也看重真实可落地的结果。">Hold the romance of an idea, and the result that can actually land.</p>
+        </div>
+        <div class="double-rule"></div>
+      </div>
+    </section>
+
+    <section id="illustration-works" class="section-full flex items-center px-10 md:px-16 py-32">
+      <div class="w-full max-w-6xl mx-auto">
+        <div class="sketch-grid">
+          <article class="sketch-item">
+            <div class="sketch-item__frame">
+              <img src="assets/images/sketch/sketch-01.png" alt="Digital drawing — ATIÏSSU portrait" class="img-zoom sketch-item__img">
+            </div>
+            <p class="font-heading text-ink text-sm mt-3 font-bold">ATIÏSSU</p>
+            <p class="font-body text-xs text-body/80" data-zh="肖像练习——色块与线。">Portrait study — color blocking with line.</p>
+          </article>
+          <article class="sketch-item">
+            <div class="sketch-item__frame">
+              <img src="assets/images/sketch/sketch-02.png" alt="Digital drawing — figure study" class="img-zoom sketch-item__img">
+            </div>
+            <p class="font-heading text-ink text-sm mt-3 font-bold" data-zh="人体写生">Figure Study</p>
+            <p class="font-body text-xs text-body/80" data-zh="单色明暗——结构与表面。">Monochrome value — structure and surface.</p>
+          </article>
+          <article class="sketch-item">
+            <div class="sketch-item__frame">
+              <img src="assets/images/sketch/sketch-03.png" alt="Digital drawing — classical light" class="img-zoom sketch-item__img">
+            </div>
+            <p class="font-heading text-ink text-sm mt-3 font-bold" data-zh="古典光影">Classical Light</p>
+            <p class="font-body text-xs text-body/80" data-zh="厚涂肖像——数字油画质感。">Thick-paint portrait — oil-paint texture in digital.</p>
+          </article>
+          <article class="sketch-item">
+            <div class="sketch-item__frame">
+              <img src="assets/images/sketch/sketch-04.png" alt="Digital drawing — character portrait" class="img-zoom sketch-item__img">
+            </div>
+            <p class="font-heading text-ink text-sm mt-3 font-bold" data-zh="角色肖像">Character Portrait</p>
+            <p class="font-body text-xs text-body/80" data-zh="影视角色练习——光与表情。">Film-character study — light and expression.</p>
+          </article>
+        </div>
+
+        <div class="character-zone">
+          <h3 class="font-heading text-ink text-xl mb-4" data-zh="角色设计">Character Design</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <div>
+              <div class="character-frame character-frame--main">
+                <img src="assets/images/sketch/character-main.png" alt="Character design — Cigu" class="img-zoom character-frame__img">
+                <p class="character-frame__caption" data-zh="慈姑 · 全身立绘">Cigu · full character stand</p>
+              </div>
+              <div class="character-image-text">
+                <p class="character-image-text__title" data-zh="角色设定">From the character sheet</p>
+                <p data-zh="姓名：慈姑"><span class="character-image-text__label">Name: </span>Cigu</p>
+                <p data-zh="生日：农历九月十九（观音诞）"><span class="character-image-text__label">Birthday: </span>the nineteenth day of the ninth lunar month (Guanyin’s birthday)</p>
+                <p data-zh="年龄：不详"><span class="character-image-text__label">Age: </span>unknown</p>
+                <p data-zh="喜好：没什么特别喜欢的。她记事起就住在寺里，性情也像这地方一样安静。有个小执拗：早课并不需要她到场，可她爱看庙里从静到满的样子，所以特意早起看人。最后一个和尚到齐，她再回去睡觉。"><span class="character-image-text__label">Likes: </span>Nothing in particular. She has lived in the temple for as long as she can remember, and her tastes are as quiet as the place. A small, stubborn habit: she is not required at morning assembly, but she likes watching the temple fill from silence, so she gets up early just to look at people. When the last monk arrives, she goes back to sleep.</p>
+                <p data-zh="兵器：一盏小花灯。从来没有人给过她兵器。若一定要算，环绕她的佛光能把伤害隔开。"><span class="character-image-text__label">Weapon: </span>A small flower lantern. No one has ever given her a weapon. If something has to count, the Buddha-light around her keeps harm at a distance.</p>
+                <p class="character-image-text__story" data-zh="慈姑是什么时候有意识的？没人知道。没人会留意供桌上的一盏灯，哪怕它已经开始像人一样呼吸。她醒来之后就住在寺里，住持的诵经始终在空气里。她从未离开，心思仍清浅年轻——可一股奇怪而可观的力量跟着她。它护着她，也把所有人隔开。她会一直这样孤单下去吗？">When did Cigu first become aware? No one knows. No one pays attention to a lantern on an altar, even one that has begun to breathe like a person. From the moment she woke, she has lived in the temple, with the abbot’s chant always somewhere in the air. She has never left, so her mind is still clear and young—but a strange, considerable power moves with her. It keeps her safe. It also keeps everyone else away. Will she stay this alone?</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="prose-block drop-cap font-body text-sm md:text-base">
+                <p data-zh="角色：慈姑——生于农历九月十九（观音诞）。安静、善观察，常在花间与旧殿里，带着一点出世的气息。"><strong class="font-heading text-ink">Character: </strong>Cigu—born on the nineteenth of the ninth lunar month (Guanyin’s birthday). Quiet, watchful, often among flowers and old temple rooms, with a little of the unworldly about her.</p>
+                <p data-zh="色彩：翠绿上装与朱红裙，点金纹与珠饰，好在殿里的暗处仍留着暖意。"><strong class="font-heading text-ink">Color: </strong>An emerald bodice and a vermilion skirt, picked out with gold pattern and jewels, so she holds warmth against the dark of the shrine.</p>
+                <p data-zh="性情：面上静，底下极敏锐。她更爱独处与花，在寺宇旧房里最自在。"><strong class="font-heading text-ink">Temperament: </strong>Still on the surface, finely tuned underneath. She prefers her own company and flowers, and feels at home in temples and old rooms.</p>
+                <p data-zh="来源：民俗与神话，数字厚涂。左图与右文合成一张完整IP设定。"><strong class="font-heading text-ink">Origin: </strong>Folk custom and myth, painted in digital thick paint. The file on the left and the story on the right make one complete IP sheet.</p>
+              </div>
+
+              <div class="character-detail-single">
+                <div class="character-frame character-frame--detail">
+                  <img src="assets/images/sketch/character-detail.png" alt="Cigu — costume callouts" class="img-zoom character-frame__img">
+                  <p class="character-frame__caption" data-zh="服饰标注">Costume notes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter-page" id="thanks" aria-label="Thank You for Watching">
+      <div class="chapter-page__frame">
+        <div class="double-rule"></div>
+        <div class="chapter-page__heading">
+          <h2 class="chapter-page__title star-title font-display" data-zh="谢谢观看">Thank You for Watching</h2>
+          <p class="chapter-page__note" data-zh="如果可以，请和我当面谈谈吧。">If we can, please talk with me in person.</p>
+        </div>
+        <div class="double-rule"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <img id="lightbox-img" class="lightbox__img" src="" alt="">
+  </div>
+
+  <div id="video-lightbox" class="lightbox video-lightbox" role="dialog" aria-modal="true" aria-label="Video player">
+    <video id="lightbox-video" class="lightbox__video" controls playsinline></video>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/card-nav.js?v=3"></script>
+  <script src="js/bilingual.js"></script>
+  <script src="js/text-pressure.js"></script>
+  <script src="js/text-cursor.js"></script>
+  <script src="js/scroll-float.js"></script>
+  <script src="js/click-spark.js"></script>
+  <script src="js/main.js?v=2"></script>
+  <script src="js/morph-slider.js"></script>
+  <script src="js/fluid-lens.js"></script>
+  <script src="js/stepper.js"></script>
+  <script src="js/bounce-cards.js"></script>
+  <script src="js/staggered-menu.js?v=4"></script>
+  <script type="module" src="js/circular-gallery.js"></script>
+  <script src="js/elastic-slider.js"></script>
+  <script src="js/dome-gallery.js?v=3"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("xhs-stack");
+      if (!root || !window.gsap) return;
+
+      var sensitivity = 200;
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function cards() {
+        return Array.prototype.slice.call(root.querySelectorAll(".xhs-stack__card"));
+      }
+
+      function layout(immediate) {
+        var list = cards();
+        var n = list.length;
+        list.forEach(function (card, index) {
+          var depthFromTop = n - index - 1;
+          window.gsap.to(card, {
+            rotate: depthFromTop * 4,
+            scale: 1 + index * 0.06 - n * 0.06,
+            x: 0,
+            y: 0,
+            transformOrigin: "90% 90%",
+            zIndex: index + 1,
+            duration: immediate || reduceMotion ? 0 : 0.45,
+            ease: "power3.out",
+            overwrite: "auto"
+          });
+        });
+      }
+
+      function sendToBack(card) {
+        root.insertBefore(card, root.firstChild);
+        layout(false);
+      }
+
+      layout(true);
+
+      var drag = null;
+
+      root.addEventListener("pointerdown", function (e) {
+        var list = cards();
+        var top = list[list.length - 1];
+        if (!top || !top.contains(e.target)) return;
+
+        drag = {
+          card: top,
+          startX: e.clientX,
+          startY: e.clientY,
+          moved: false,
+          pointerId: e.pointerId
+        };
+        top.classList.add("is-dragging");
+        top.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+
+      root.addEventListener("pointermove", function (e) {
+        if (!drag) return;
+        var dx = e.clientX - drag.startX;
+        var dy = e.clientY - drag.startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) drag.moved = true;
+        window.gsap.set(drag.card, { x: dx, y: dy, rotate: dx * 0.04 });
+      });
+
+      function endDrag(e) {
+        if (!drag) return;
+        var card = drag.card;
+        var dx = e.clientX - drag.startX;
+        var dy = e.clientY - drag.startY;
+        var distance = Math.hypot(dx, dy);
+        var wasClick = !drag.moved;
+        var shouldSend = distance > sensitivity;
+        card.classList.remove("is-dragging");
+        drag = null;
+        if (shouldSend) {
+          sendToBack(card);
+          return;
+        }
+        layout(false);
+        if (!wasClick) return;
+        var img = card.querySelector("img");
+        if (img && typeof window.openImageLightbox === "function") {
+          window.openImageLightbox(img.currentSrc || img.src, img.alt);
+        }
+      }
+
+      root.addEventListener("pointerup", endDrag);
+      root.addEventListener("pointercancel", endDrag);
+    })();
+  </script>
+</body>
+</html>

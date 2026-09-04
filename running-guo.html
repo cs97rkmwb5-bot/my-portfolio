@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Running‑Kueh｜Chaoshan Red Rice Cake Pixel Runner · Jin Qiuzhu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;600;700;900&family=Rye&family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: "#f8f8f6",
+            ink: "#222222",
+            body: "#3a3a3a",
+            line: "#444444",
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/CardNav.css">
+  <link rel="stylesheet" href="css/bilingual.css">
+  <link rel="stylesheet" href="css/text-cursor.css">
+  <link rel="stylesheet" href="css/text-pressure.css">
+  <link rel="stylesheet" href="css/scroll-float.css">
+</head>
+<body class="bg-paper text-body antialiased">
+
+  <div id="card-nav-root" data-home="index.html.html"></div>
+
+  <main class="running-guo-page">
+    <article class="running-guo-page__inner" id="running-guo">
+
+      <span class="label-box label-box--plain running-guo-page__kicker">interactive prototype</span>
+      <h1 class="font-display text-ink star-title running-guo-page__title">Running‑Kueh｜Chaoshan Red Rice Cake Pixel Runner</h1>
+      <p class="running-guo-page__subtitle">Personal Creative Pixel‑Game Prototype Demo</p>
+      <div class="double-rule my-8"></div>
+
+      <section class="running-guo-intro" aria-labelledby="running-guo-intro-heading">
+        <h2 id="running-guo-intro-heading" class="sr-only">Project introduction</h2>
+
+        <dl class="running-guo-meta">
+          <div class="running-guo-meta__row">
+            <dt class="running-guo-meta__label">Project type</dt>
+            <dd class="running-guo-meta__value">Personal creative pixel-game prototype demo</dd>
+          </div>
+          <div class="running-guo-meta__row">
+            <dt class="running-guo-meta__label">Timeline</dt>
+            <dd class="running-guo-meta__value">2 weeks</dd>
+          </div>
+          <div class="running-guo-meta__row">
+            <dt class="running-guo-meta__label">Tools</dt>
+            <dd class="running-guo-meta__value">Jimeng · Photoshop · Procreate · Cursor</dd>
+          </div>
+          <div class="running-guo-meta__row running-guo-meta__row--stack">
+            <dt class="running-guo-meta__label">Role</dt>
+            <dd class="running-guo-meta__value">
+              <p>I independently completed the Chaoshan folk-custom research, gameplay planning, and the IP, scene, and UI design. Every character, prop, and environment was drawn by hand, from sketch through to finished pixel art.</p>
+              <p>Jimeng was used only for early inspiration and did not produce final artwork. Cursor helped generate part of the game code, which I then revised and debugged into a fully playable demo.</p>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="running-guo-about">
+          <h3 class="running-guo-about__label">About the project</h3>
+          <div class="prose-block drop-cap font-body text-sm md:text-base">
+            <p>This casual runner takes its cue from the Chaoshan red rice cake, a local folk symbol with real cultural weight. It is aimed at young casual players who like pixel games and have a mild curiosity about regional folk culture.</p>
+            <p>Core play includes collecting items, dodging obstacles, and a folk-custom quiz, with a finished question bank.</p>
+            <p>The playable demo includes a hand-drawn pixel kitchen as the main scene, with a complete set of character, prop, and ingredient assets. An arcade-building level, an encyclopedia, and cultural merchandise remain ideas for later. No finished visuals exist for those yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="running-guo-play" aria-labelledby="running-guo-play-heading">
+        <h2 id="running-guo-play-heading" class="running-guo-play__heading">Play Demo</h2>
+        <div class="double-rule running-guo-play__rule"></div>
+
+        <div class="running-guo-play__frame">
+          <iframe
+            class="running-guo-play__iframe"
+            src="https://cs97rkmwb5-bot.github.io/1111/"
+            title="Running-Kueh playable demo"
+            allow="fullscreen; gamepad; autoplay"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <p class="running-guo-play__hint">
+          Desktop: arrow keys · Mobile: on‑screen joystick · Click the frame to focus before playing
+        </p>
+        <div class="running-guo-play__actions">
+          <a
+            class="running-guo-play__btn"
+            href="https://cs97rkmwb5-bot.github.io/1111/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open demo in new window ↗</a>
+        </div>
+      </section>
+
+      <section class="running-guo-section" aria-labelledby="running-guo-workflow-heading">
+        <h2 id="running-guo-workflow-heading" class="running-guo-section__heading">Human–AI Collaboration</h2>
+        <div class="double-rule running-guo-section__rule"></div>
+        <ul class="running-guo-workflow">
+          <li>
+            <strong>Human work</strong>
+            Folk-culture research, gameplay design, cultural-symbol checks, all hand-drawn art, map-path rules, and code debugging.
+          </li>
+          <li>
+            <strong>AI · Jimeng</strong>
+            Early reference sketches for inspiration only. No final artwork.
+          </li>
+          <li>
+            <strong>AI · Cursor</strong>
+            Partial code generation, followed by manual revision and debugging.
+          </li>
+        </ul>
+      </section>
+
+      <section class="running-guo-section" aria-labelledby="running-guo-map-heading">
+        <h2 id="running-guo-map-heading" class="running-guo-section__heading">Map-Path Correction</h2>
+        <div class="double-rule running-guo-section__rule"></div>
+        <div class="prose-block drop-cap font-body text-sm md:text-base">
+          <p>AI-generated map layouts struggled to read movement logic and caused the character to clip through geometry.</p>
+          <p>I built three-color marker layers—table, floor, and water basin—to constrain and correct the paths. Once the paths checked out, I removed the markers and drew the final tile map by hand.</p>
+        </div>
+      </section>
+
+      <section class="running-guo-section" aria-labelledby="running-guo-reflection-heading">
+        <h2 id="running-guo-reflection-heading" class="running-guo-section__heading">Reflection</h2>
+        <div class="double-rule running-guo-section__rule"></div>
+        <div class="prose-block drop-cap font-body text-sm md:text-base">
+          <p>AI has a limited grasp of niche local folk culture, so every visual asset was drawn by hand to keep the cultural symbols from going wrong.</p>
+          <p>Code generated by Cursor often needed several rounds of manual fixes on the interaction logic.</p>
+          <p>A runner leaves limited room for educational content. A built-in encyclopedia could carry deeper folk-custom notes in a later version. The arcade-building scene is a planned extra level.</p>
+          <p>This is an unreleased personal prototype. There is no live-user data yet.</p>
+        </div>
+      </section>
+
+      <p class="running-guo-page__back">
+        <a class="running-guo-page__back-link" href="index.html.html#projects">← Back to portfolio</a>
+      </p>
+    </article>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/card-nav.js"></script>
+  <script src="js/bilingual.js"></script>
+  <script src="js/text-pressure.js"></script>
+  <script src="js/text-cursor.js"></script>
+  <script src="js/scroll-float.js"></script>
+  <script src="js/click-spark.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

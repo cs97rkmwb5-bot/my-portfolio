@@ -1,0 +1,48 @@
+/* ============================================
+   TextPressure — 封面标题鼠标交互字体效果
+   ============================================ */
+
+.text-pressure-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(100px, 18vw, 180px);
+  margin: 0 auto;
+}
+
+.text-pressure-title {
+  color: #222222;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
+  font-weight: 100;
+  width: 100%;
+  font-family: "Roboto Flex", sans-serif;
+  transform-origin: center top;
+}
+
+.text-pressure-title.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-pressure-title span {
+  display: inline-block;
+  will-change: font-variation-settings, opacity;
+}
+
+.text-pressure-title.stroke span {
+  position: relative;
+}
+
+.text-pressure-title.stroke span::after {
+  content: attr(data-char);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: transparent;
+  z-index: -1;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: var(--stroke-color, #444444);
+}

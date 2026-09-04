@@ -1,0 +1,1214 @@
+/* ============================================
+   金秋竹 · 国风动画 AIGC 作品集 — 自定义样式
+   配合 Tailwind 使用，实现报刊排版细节
+   ============================================ */
+
+/* ---- 全局 ---- */
+:root {
+  --font-display: "Rye", "Noto Serif SC", serif;
+  --font-heading: "Roboto Flex", "Noto Sans SC", sans-serif;
+  --font-body: "Roboto Flex", "Noto Sans SC", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* 锚点跳转时补偿固定导航高度 */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+/* 固定导航占用空间补偿（封面全屏仍从顶开始） */
+.section-full {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ---- 板块大标题页：单独占一页 16:9 格子 ---- */
+.chapter-page {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5rem 1.5rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.chapter-page__frame {
+  width: min(calc(100% - 0.5rem), calc((100vh - 7rem) * 16 / 9));
+  max-height: calc(100vh - 7rem);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  box-sizing: border-box;
+}
+
+.chapter-page__frame .double-rule {
+  width: min(28rem, 62%);
+  flex-shrink: 0;
+}
+
+.chapter-page__title {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(3.6rem, 10vw, 7rem);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #222222;
+}
+
+section#about.chapter-page {
+  padding: 0 1.5rem;
+  scroll-margin-top: 0;
+}
+
+#about .chapter-page__title {
+  font-size: clamp(3.6rem, 10vw, 7rem);
+}
+
+.chapter-page__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: min(38rem, 88%);
+}
+
+#thanks .chapter-page__heading {
+  max-width: min(56rem, 94%);
+}
+
+#thanks .chapter-page__title {
+  text-wrap: balance;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.chapter-page__note {
+  margin: 0.7rem 0 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(0.72rem, 1.35vw, 0.84rem);
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: #9a9a96;
+}
+
+/* ---- 字体层级：复古衬线仅用于导航一级标题；页面标题加粗常规字体 ---- */
+.font-display {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* ---- 双层平行横线 ---- */
+.double-rule {
+  height: 5px;
+  background:
+    linear-gradient(#444444, #444444) top / 100% 1px no-repeat,
+    linear-gradient(#444444, #444444) bottom / 100% 1px no-repeat;
+}
+
+.double-rule--vertical {
+  width: 5px;
+  height: auto;
+  align-self: stretch;
+  background:
+    linear-gradient(#444444, #444444) left / 1px 100% no-repeat,
+    linear-gradient(#444444, #444444) right / 1px 100% no-repeat;
+}
+
+/* ---- 首字母下沉 ---- */
+.drop-cap > p:first-of-type::first-letter,
+p.drop-cap::first-letter {
+  float: left;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 700;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding-right: 0.1em;
+  padding-top: 0.05em;
+  color: #222222;
+}
+
+.prose-block p {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.prose-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- 页码 ---- */
+.page-number {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: #444444;
+}
+
+/* ---- 标识方框（独家报道 / 日期等） ---- */
+.label-box {
+  display: inline-block;
+  border: 1px solid #444444;
+  padding: 0.25rem 0.75rem;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #222222;
+}
+
+.label-box--plain {
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+
+/* ---- 带星形装饰的标题 ---- */
+.star-title::before,
+.star-title::after {
+  content: "★";
+  font-size: 0.45em;
+  vertical-align: middle;
+  margin: 0 0.35em;
+  opacity: 0.85;
+}
+
+/* ---- 顶部导航（Signal-A 风格刊头） ---- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #f8f8f6;
+}
+
+.site-nav__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.site-nav__brand {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: #222222;
+  white-space: nowrap;
+}
+
+.site-nav__brand span {
+  opacity: 0.35;
+  margin: 0 0.4em;
+}
+
+.site-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.site-nav__link {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  color: #222222;
+  transition: font-weight 0.15s ease, opacity 0.15s ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link.is-active {
+  font-weight: 700;
+}
+
+/* ---- 可点击图片 ---- */
+.img-zoom {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.img-zoom:hover {
+  opacity: 0.92;
+}
+
+/* ---- 头像悬浮弹窗 ---- */
+.avatar-wrap {
+  position: relative;
+  width: fit-content;
+}
+
+.avatar-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 1.5rem;
+  height: 100%;
+}
+
+.avatar-trigger {
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.avatar-card {
+  position: absolute;
+  left: calc(100% + 1.35rem);
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  width: 19.5rem;
+  background: #f8f8f6;
+  padding: 1.4rem 1.35rem 1.45rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+  z-index: 20;
+}
+
+.avatar-wrap:hover .avatar-card,
+.avatar-wrap:focus-within .avatar-card,
+.avatar-wrap.is-open .avatar-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}
+
+.avatar-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.avatar-card__list li {
+  position: relative;
+  padding-left: 1.05rem;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: #3a3a3a;
+}
+
+.avatar-card__list li:last-child {
+  margin-bottom: 0;
+}
+
+.avatar-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #222222;
+}
+
+@media (max-width: 767px) {
+  .avatar-card {
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.85rem);
+    width: 100%;
+    transform: translateY(8px);
+  }
+
+  .avatar-wrap::after {
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 1rem;
+  }
+
+  .avatar-wrap:hover .avatar-card,
+  .avatar-wrap:focus-within .avatar-card,
+  .avatar-wrap.is-open .avatar-card {
+    transform: translateY(0);
+  }
+}
+
+.about-avatar {
+  display: block;
+  width: 17.5rem;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 8%;
+  background: #f8f8f6;
+}
+
+@media (min-width: 768px) {
+  .about-avatar {
+    width: 19.5rem;
+  }
+}
+
+.avatar-hint {
+  margin: 0.55rem 0 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #9a9a96;
+}
+
+.about-prose {
+  font-family: var(--font-body);
+  color: #3a3a3a;
+}
+
+.about-prose__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: #222222;
+  margin: 0 0 0.55rem;
+  line-height: 1.3;
+}
+
+.about-prose__meta {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  margin: 0 0 2rem;
+  text-align: justify;
+}
+
+.about-prose__heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: #222222;
+  margin: 0 0 0.75rem;
+}
+
+.about-internships {
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+}
+
+.about-internships li {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 0.55rem 0;
+}
+
+.about-prose__body {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  text-align: justify;
+  margin: 0 0 1.85rem;
+}
+
+.about-prose .copy-email {
+  margin-top: 0.35rem;
+}
+
+.about-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.35rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.about-contact .copy-email {
+  margin-top: 0;
+}
+
+.about-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.55rem 0 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid #444444;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-family: "Libre Baskerville", "Noto Sans SC", sans-serif;
+  font-size: 0.9rem;
+  color: #222222;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.about-phone:hover {
+  color: #222222;
+}
+
+/* ---- 项目详情：主图 + 细节整齐排列 ---- */
+.project-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-gallery__main {
+  width: 100%;
+}
+
+.project-gallery__details-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.65rem 0.85rem;
+}
+
+.project-gallery__details-note {
+  flex: 0 0 auto;
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #3a3a3a;
+  opacity: 0.72;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin: 0;
+  padding-bottom: 0.25rem;
+}
+
+.project-gallery__details-block--stacked {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.project-gallery__figure-note {
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #3a3a3a;
+  opacity: 0.72;
+  text-align: center;
+  margin: 0.35rem 0 0;
+}
+
+.project-gallery__details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.project-gallery__detail-frame {
+  background: #f8f8f6;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  height: auto;
+  overflow: visible;
+}
+
+.project-gallery__detail-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  cursor: zoom-in;
+}
+
+.project-gallery__detail {
+  width: 100%;
+}
+
+.project-gallery__caption {
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.75rem;
+  color: #3a3a3a;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .project-gallery__details-block {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-gallery__details-note {
+    writing-mode: horizontal-tb;
+    padding-bottom: 0;
+  }
+
+  .project-gallery__details {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}
+
+/* ---- 商业项目 2×2 栏目 ---- */
+.news-grid-item {
+  padding: 0.25rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.news-grid-item__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #222222;
+  margin: 0.75rem 0 0.5rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.news-grid-item__title:hover {
+  opacity: 0.65;
+}
+
+/* 商业项目总览缩略图：点击跳转详情 */
+.project-overview-thumb {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.project-overview-thumb:hover {
+  opacity: 0.88;
+}
+
+.project-overview-thumb img {
+  transition: opacity 0.2s ease;
+}
+
+/* ---- 板绘展示：完整显示，不裁切 ---- */
+.sketch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.25rem;
+}
+
+.sketch-item__frame {
+  background: #f8f8f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  height: auto;
+  max-height: none;
+  padding: 0.75rem;
+  overflow: visible;
+}
+
+.sketch-item__img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  cursor: zoom-in;
+}
+
+@media (max-width: 640px) {
+  .sketch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sketch-item__frame {
+    height: auto;
+    min-height: 220px;
+    max-height: none;
+  }
+
+  .sketch-item__img {
+    max-height: none;
+  }
+}
+
+/* ---- 板绘小栏目（保留兼容） ---- */
+.sketch-pair {
+  padding: 1rem;
+}
+
+/* ---- 可复制邮箱 ---- */
+.copy-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #444444;
+  padding: 0.5rem 1rem;
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.9rem;
+  color: #222222;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+
+.copy-email:hover {
+  background: rgba(68, 68, 68, 0.05);
+}
+
+.copy-email.is-copied {
+  background: rgba(68, 68, 68, 0.08);
+}
+
+/* ---- 全屏图片预览 Lightbox ---- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(34, 34, 34, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__img {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100vh;
+  max-height: 100dvh;
+  object-fit: contain;
+  border: none;
+  cursor: zoom-out;
+}
+
+.lightbox__video {
+  max-width: 92vw;
+  max-height: 90vh;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #000;
+  cursor: default;
+}
+
+.video-lightbox {
+  cursor: pointer;
+}
+
+/* ---- 项目主视频：封面 + 播放按钮 ---- */
+.video-play {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+}
+
+.video-play__preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.video-play.is-playing .video-play__preview {
+  pointer-events: auto;
+  object-fit: contain;
+  background: #111111;
+}
+
+.video-play.is-playing .video-play__overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.video-play__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: rgba(34, 34, 34, 0.3);
+  transition: background 0.25s ease;
+}
+
+.video-play:hover .video-play__overlay,
+.video-play:focus-visible .video-play__overlay {
+  background: rgba(34, 34, 34, 0.45);
+}
+
+.video-play__icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid rgba(248, 248, 246, 0.85);
+  border-radius: 50%;
+  position: relative;
+}
+
+.video-play__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 0.55rem 0 0.55rem 0.95rem;
+  border-color: transparent transparent transparent rgba(248, 248, 246, 0.92);
+}
+
+.video-play__label {
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: rgba(248, 248, 246, 0.92);
+}
+
+/* ---- 角色设计专区 ---- */
+.character-zone {
+  margin-top: 4rem;
+  padding-top: 3.25rem;
+}
+
+.character-frame {
+  overflow: visible;
+}
+
+.character-frame--main {
+  background: #f8f8f6;
+}
+
+.character-frame__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.character-frame__caption {
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.72rem;
+  color: #3a3a3a;
+  opacity: 0.75;
+  padding: 0.35rem 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+.character-detail-single {
+  margin-top: 1.25rem;
+}
+
+.character-frame--detail {
+  background: #f8f8f6;
+}
+
+.character-image-text {
+  margin-top: 0.85rem;
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.68rem;
+  line-height: 1.75;
+  color: #3a3a3a;
+  opacity: 0.82;
+}
+
+.character-image-text__title {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #222222;
+  opacity: 1;
+  margin-bottom: 0.5rem;
+}
+
+.character-image-text__label {
+  color: #222222;
+  opacity: 0.9;
+}
+
+.character-image-text p {
+  margin: 0 0 0.45rem;
+}
+
+.character-image-text__story {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+}
+
+.character-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .character-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- 点击火花特效 ClickSpark ---- */
+#click-spark-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ---- Running粿 项目页 ---- */
+.running-guo-page {
+  padding: 8.5rem 2.5rem 7rem;
+}
+
+.running-guo-page__inner {
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.running-guo-page__kicker {
+  display: block;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.running-guo-page__title {
+  text-align: center;
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  line-height: 1.35;
+}
+
+.running-guo-page__subtitle {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #222222;
+  opacity: 0.55;
+}
+
+.running-guo-intro {
+  margin-top: 3.75rem;
+}
+
+.running-guo-meta {
+  margin: 0 0 3.25rem;
+}
+
+.running-guo-meta__row {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1.25rem;
+  padding: 1.15rem 0;
+}
+
+.running-guo-meta__row--stack {
+  align-items: start;
+}
+
+.running-guo-meta__label {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  color: #222222;
+  margin: 0;
+}
+
+.running-guo-meta__value {
+  margin: 0;
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #3a3a3a;
+}
+
+.running-guo-meta__value p {
+  margin: 0 0 0.9rem;
+  text-align: justify;
+}
+
+.running-guo-meta__value p:last-child {
+  margin-bottom: 0;
+}
+
+.running-guo-about__label {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  color: #222222;
+  margin: 0 0 1.5rem;
+}
+
+.running-guo-about .prose-block p {
+  line-height: 1.95;
+  margin-bottom: 1.35rem;
+}
+
+.running-guo-play {
+  margin-top: 8.5rem;
+  padding-top: 5.5rem;
+}
+
+.running-guo-play__heading,
+.running-guo-section__heading {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  color: #222222;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 0 0 0.35rem;
+}
+
+.running-guo-play__rule,
+.running-guo-section__rule {
+  max-width: 8rem;
+  margin: 0 auto 2.75rem;
+}
+
+.running-guo-play__frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 3.25rem 0 2.25rem;
+  background: #111111;
+  overflow: hidden;
+}
+
+.running-guo-play__iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.running-guo-play__hint {
+  margin: 0 0 1.35rem;
+  text-align: center;
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: rgba(58, 58, 58, 0.78);
+}
+
+.running-guo-play__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.running-guo-play__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #444444;
+  padding: 0.7rem 1.4rem;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: #222222;
+  background: transparent;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.running-guo-play__btn:hover {
+  background: rgba(68, 68, 68, 0.05);
+}
+
+.running-guo-section {
+  margin-top: 6.5rem;
+  padding-top: 5rem;
+}
+
+.running-guo-section .prose-block p {
+  line-height: 1.95;
+  margin-bottom: 1.25rem;
+}
+
+.running-guo-workflow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.running-guo-workflow li {
+  padding: 1.35rem 0;
+  font-family: "Libre Baskerville", "Noto Serif SC", serif;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: #3a3a3a;
+}
+
+.running-guo-workflow strong {
+  display: block;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: #222222;
+  margin-bottom: 0.35rem;
+}
+
+.running-guo-page__back {
+  margin-top: 7rem;
+  text-align: center;
+}
+
+.running-guo-page__back-link {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.14em;
+  color: #222222;
+  border-bottom: 1px solid rgba(68, 68, 68, 0.35);
+}
+
+.running-guo-page__back-link:hover {
+  opacity: 0.65;
+}
+
+@media (max-width: 720px) {
+  .running-guo-page {
+    padding: 7.5rem 1.25rem 5rem;
+  }
+
+  .running-guo-meta__row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .running-guo-play {
+    margin-top: 6rem;
+    padding-top: 4rem;
+  }
+
+  .running-guo-play__frame {
+    margin: 2.25rem 0 1.75rem;
+  }
+
+  .running-guo-section {
+    margin-top: 4.75rem;
+    padding-top: 3.75rem;
+  }
+}
+
+/* ---- 页面标题与小标题：加粗常规无衬线；正文保持常规字重 ---- */
+.star-title,
+.font-display,
+h1.star-title,
+h2.star-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.block__title,
+.spec-split__heading,
+.about-prose__heading,
+.about-prose__heading strong,
+.news-grid-item__title,
+.news-grid-item__title a,
+.running-guo-about__label,
+.running-guo-play__heading,
+.running-guo-section__heading,
+.running-guo-meta__label,
+.about-tools > p.font-heading,
+#illustration-works h3.font-heading,
+.sketch-item .font-heading,
+.zensit-fragment__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #222222;
+}
+
+.slot-copy,
+.about-prose,
+.about-prose__body,
+.about-prose__meta,
+.about-internships li,
+.prose-block,
+.prose-block p,
+.news-grid-item p.font-body,
+.running-guo-meta__value,
+.running-guo-about .prose-block p,
+.running-guo-section .prose-block p {
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  font-size: 1.0625rem !important;
+  line-height: 1.75 !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

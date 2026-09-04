@@ -1,0 +1,242 @@
+/* ============================================
+   CardNav — React Bits style, light theme
+   ============================================ */
+
+.card-nav-container {
+  position: fixed;
+  top: 1.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: 90%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+.card-nav {
+  display: block;
+  height: 60px;
+  padding: 0;
+  background-color: #fff;
+  border: 0.5px solid rgba(34, 34, 34, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  will-change: height;
+}
+
+.card-nav-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.45rem 0.55rem 1.1rem;
+  z-index: 2;
+}
+
+.hamburger-menu {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #000;
+  border-radius: 999px;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background-color 0.25s ease;
+}
+
+.hamburger-menu:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger-line {
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logo-text span {
+  opacity: 0.38;
+  margin: 0 0.4em;
+}
+
+.card-nav-cta-button {
+  flex-shrink: 0;
+  height: 100%;
+  max-height: 42px;
+  padding: 0 1rem;
+  border: none;
+  border-radius: calc(0.75rem - 0.35rem);
+  background: #111;
+  color: #fff;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.card-nav-cta-button:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.card-nav-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  padding: 0.5rem;
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-nav.open .card-nav-content {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-card {
+  height: 100%;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 0;
+  border: 1px solid #222222;
+  background: #f8f8f6;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  gap: 8px;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.nav-card-label {
+  font-family: "Rye", "Noto Serif SC", serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.nav-card-links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-card-link {
+  font-family: "Rye", "Noto Serif SC", serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-card-link:hover {
+  opacity: 0.75;
+}
+
+.nav-card-link-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .card-nav-container {
+    top: 0.85em;
+    width: calc(100% - 1.25rem);
+  }
+
+  .card-nav-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-card {
+    min-height: 92px;
+  }
+
+  .nav-card-label {
+    font-size: 18px;
+  }
+
+  .logo-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  .card-nav-cta-button {
+    padding: 0 0.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .logo-text .logo-text__rest {
+    display: none;
+  }
+}

@@ -1,0 +1,168 @@
+.stepper {
+  width: 100%;
+}
+
+.step-circle-container {
+  width: 100%;
+  background: #f8f8f6;
+}
+
+.step-indicator-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 2rem 2rem 1.25rem;
+}
+
+.step-content-default {
+  position: relative;
+  overflow: hidden;
+}
+
+.step-default {
+  padding: 0 2rem 0.5rem;
+}
+
+.step-panel {
+  display: none;
+}
+
+.step-panel.is-active {
+  display: block;
+}
+
+.step-panel .slot-copy {
+  margin: 0;
+}
+
+.step-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f8f8f6;
+}
+
+.footer-container {
+  padding: 0 2rem 2rem;
+}
+
+.footer-nav {
+  margin-top: 2.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-nav.is-first {
+  justify-content: flex-end;
+}
+
+.back-button,
+.next-button {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+.back-button {
+  color: #3a3a3a;
+  padding: 0.25rem 0.5rem;
+}
+
+.back-button:hover {
+  color: #222222;
+}
+
+.back-button.is-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.next-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #222222;
+  color: #f8f8f6;
+  padding: 0.4rem 1rem;
+}
+
+.next-button:hover {
+  opacity: 0.82;
+}
+
+.step-indicator {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.step-indicator-inner {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: #222222;
+  color: #a3a3a3;
+}
+
+.step-indicator.is-active .step-indicator-inner,
+.step-indicator.is-complete .step-indicator-inner {
+  background: #222222;
+  color: #f8f8f6;
+}
+
+.active-dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+  background: #f8f8f6;
+}
+
+.check-icon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.step-connector {
+  position: relative;
+  margin: 0 0.5rem;
+  height: 0.125rem;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background: #c8c8c4;
+}
+
+.step-connector-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: #222222;
+}
+
+.step-connector.is-complete .step-connector-inner {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .step-indicator-row,
+  .step-default,
+  .footer-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

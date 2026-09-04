@@ -1,0 +1,41 @@
+.circular-gallery {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  background: #f8f8f6;
+  touch-action: none;
+  z-index: 2;
+}
+
+.circular-gallery:active,
+.circular-gallery.is-dragging {
+  cursor: grabbing;
+}
+
+.circular-gallery:focus-visible {
+  outline: 2px solid #222222;
+  outline-offset: 3px;
+}
+
+.circular-gallery canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.circular-gallery__fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.circular-gallery.is-ready .circular-gallery__fallback {
+  opacity: 0;
+  pointer-events: none;
+}

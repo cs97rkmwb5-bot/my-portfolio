@@ -1,0 +1,74 @@
+/* Right-click to view original Chinese */
+.zh-popover {
+  position: fixed;
+  z-index: 10000;
+  max-width: min(420px, calc(100vw - 2rem));
+  padding: 0.85rem 1rem 1rem;
+  background: rgba(34, 34, 34, 0.94);
+  color: #f8f8f6;
+  border: 1px solid #222222;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  font-family: "Noto Sans SC", "Roboto Flex", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.zh-popover.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zh-popover__label {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 0.45rem;
+}
+
+[data-zh] {
+  cursor: context-menu;
+}
+
+.lang-fab {
+  position: fixed;
+  right: 1.35rem;
+  bottom: 1.35rem;
+  z-index: 180;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #222222;
+  background: #f8f8f6;
+  color: #222222;
+  font-family: "Noto Serif SC", "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(34, 34, 34, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-fab:hover,
+.lang-fab:focus-visible {
+  background: #222222;
+  color: #f8f8f6;
+  outline: none;
+}
+
+.lang-fab.is-zh {
+  font-family: "Cormorant Garamond", "Libre Baskerville", serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+}
